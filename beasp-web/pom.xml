@@ -1,0 +1,120 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+  	<groupId>org.huel.beasp</groupId>
+  	<artifactId>beasp-parent</artifactId>
+  	<relativePath>../beasp-parent/pom.xml</relativePath>
+  	<version>0.0.1-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>beasp-web</artifactId>
+  <packaging>war</packaging>
+
+  <name>beasp-web Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <dependencies>
+  	<!-- Maven 模块 -->
+  	<dependency>
+		<groupId>${project.groupId}</groupId>
+		<artifactId>beasp-core</artifactId>
+	</dependency>
+    
+    <!-- Spring 相关 jar 包 -->
+    <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc</artifactId>
+	</dependency>
+    
+    <!-- Servlet 相关 jar 包 -->
+    <dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>servlet-api</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet.jsp</groupId>
+		<artifactId>jsp-api</artifactId>
+	</dependency>
+	
+	<!-- jstl 标签 相关 jar 包 -->
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>jstl</artifactId>
+	</dependency>
+	
+	<!-- json 相关的 jar 包 -->
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-core</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-annotations</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-mapper-asl</artifactId>
+	</dependency>
+	<!-- 文件上传 相关的 jar 包 -->
+	<dependency>
+		<groupId>commons-io</groupId>
+		<artifactId>commons-io</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>commons-fileupload</groupId>
+		<artifactId>commons-fileupload</artifactId>
+	</dependency>
+	<!-- 邮箱验证 相关的 jar 包 -->
+	<dependency>
+		<groupId>javax.mail</groupId>
+		<artifactId>mail</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.velocity</groupId>
+		<artifactId>velocity</artifactId>
+	</dependency>
+	<!-- Base64 加密与解密 相关jar包 -->
+	<dependency>
+		<groupId>commons-codec</groupId>
+		<artifactId>commons-codec</artifactId>
+	</dependency>
+	
+	<!-- 全文检索方案一、Compass-->
+	<!-- <dependency>
+		<groupId>org.compass-project</groupId>
+		<artifactId>compass</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>net.paoding</groupId>
+		<artifactId>paoding</artifactId>
+	</dependency> -->
+	<!-- 全文检索方案二、Hibernate Search-->
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-search-orm</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.lucene</groupId>
+		<artifactId>lucene-analyzers-smartcn</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.lucene</groupId>
+		<artifactId>lucene-highlighter</artifactId>
+	</dependency>
+  </dependencies>
+  <build>
+    <finalName>beasp-web</finalName>
+    <plugins>
+    	<plugin>
+		   <groupId>org.mortbay.jetty</groupId>
+		   <artifactId>jetty-maven-plugin</artifactId>
+		</plugin>
+    </plugins>
+  </build>
+</project>

@@ -1,0 +1,103 @@
+@CHARSET "UTF-8";
+input, button, textarea, select{border: medium none;}
+input, textarea{outline: medium none;}
+#main{padding-top: 50px; min-height: 750px;}
+.book-infos{position: relative; background-color: #172A34;}
+.book-infos .w-1200{height: 240px; z-index: 1;}
+.book-infos .path{line-height: 48px; color: #A3AAAE; opacity:1;}
+.book-infos .path .breadcrumb{margin-bottom: 0px;}
+.path .path-split{margin: 0px 6px;font-style: normal;}
+.book-infos .path a{color: #A3AAAE;}
+.book-infos .path ol{padding: 0;}
+.book-infos .path a:hover{color:#FFF;}
+.book-infos h2{line-height: 1; font-weight: bold; font-size: 32px; color: #FFF;}
+.book-infos .book-details{position: absolute; left: 0px;bottom: 0px;color: #FFF;font-size: 0px; white-space: nowrap;}
+.book-infos .book-details .book-details-item{display: inline-block;position:relative; width: 178px; height: 80px; padding-left: 21px; font-size: 14px;}
+.book-infos .book-details .book-details-item .meta-value{display: block; margin: 5px 0px 8px; opacity: 0.6;}
+.book-infos .book-details .book-details-item strong{font-weight: blod; font-size: 18px;}
+.book-infos .book-details .book-details-item .meta{display: block; opacity: 0.4; font-size: 14px;}
+.book-infos .book-details .book-details-item em{content: ""; display: block; position: absolute; left: 0px; top: 0px; height: 100%; width: 1px; background-color: #FFF;opacity:0.1;}
+.book-infos .extra{position: absolute; right: 10px; bottom: 30px; color: #FFF;height: 20px;line-height: 20px;}
+.book-infos .extra .share, .book-infos .extra .follow-action{background-image: url("/resources/images/info_s.png"); background-repeat: no-repeat;}
+.book-infos .extra .share{display: inline-block; float: none; padding: 0px; line-height: normal; margin: 0px 7px; width: 20px; height: 16px; opacity:0.6; filter: alpha(opacity=60);vertical-align: middle; transition: opacity 0.3s; }
+.book-infos .extra .share:hover {opacity: 1; filter: alpha(opacity=100);}
+.book-infos .extra .share.wx{background-position: 0px -60px;}
+.book-infos .extra .share.qq{background-position: 0px -80px;}
+.book-infos .extra .share.sina{background-position: 0px -100px;}
+.book-infos .extra .split-line{margin: 2px 16px 0px; width: 1px; height: 16px;background-color: #FFF;opacity: 0.4;filter: alpha(opacity=40);}
+.book-infos .extra .follow-action{padding-left: 24px; color: #FFF; background-position: 0px -37px;}
+.book-infos .extra .follow-action:hover { background-position: 0 -137px;}
+.book-infos .extra .follow-action.followed { background-position: 0 -157px;}
+.book-infos .extra .praise-action{padding-left: 8px;  color: #FFF;}
+.book-infos .extra i.fa{ font-size: 16px; cursor: pointer;}
+
+.book-infos .cover-mask{position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;}
+.book-infos img{position: absolute; right: 120px; top: 20px; animation: imageAny 5s;}
+.book-infos .cover-mask {filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr="#cc000000", endcolorstr="#33000000", gradientType=1);}
+.book-infos .cover-mask{background-color: #000;opacity:0.9;}
+.book-infos-main{margin-top: 40px;}
+.book-infos-main .content-wrap{margin-bottom: 0px; padding-right: 320px; overflow-x:hidden;}
+.book-infos-main .content{float: left;width: 100%; overflow: hidden;}
+.book-infos-main .content .book-brief{margin-bottom: 38px; padding: 20px 0px 30px; border-bottom: 1px solid #D0D6D9;}
+.book-infos-main .content .ctit{margin-bottom: 6px; font-weight: bold; font-size: 18px; color: #FF318C;}
+.book-infos-main .content .course-brief p{line-height: 28px;}
+
+<!--书籍评论 -->
+#pl-content{padding-top: 30px;}
+.publish{position: relative;}
+.publish-wrap{position: relative;}
+.pl-input-inner{position: realative; border: 1px solid #D3DCE0; padding: 8px 10px; transition: border-color 0.2s ease 0s;}
+.pl-input-inner textarea{display: block; height: 82px; width: 100%; resize: none; font-size: 13px; color: #555; line-height: 18px;}
+.pl-input-inner .num-limit{position: absolute; line-height: 100%; font-size: 12px; right: 5px; bottom: 5px; color: #D0D6D9;}
+.input-btm{padding: 30px 0px 40px;}
+.book-btn{width: 120px; height: 40px; background-color: #00B33B; text-align: center; font: 14px/40px "Helvetica Neue","Hiragino Sans GB","Segoe UI","Microsoft Yahei","微软雅黑",Tahoma,Arial,STHeiti,sans-serif; color: #FFF; cursor: pointer;}
+.book-btn:hover{background-color: #33a646;}
+.pl-container{border-top: 1px solid #F1F2F3;}
+.pl-container .pl-list{padding: 20px 0px; border-bottom: 1px solid #EDF1F2;}
+.pl-container .pl-list-avator{float: left; height: 40px; height: 40px;}
+.pl-container .pl-list-avator img{display: block; border-radius: 50%;}
+.pl-container .pl-list-main{margin-left: 60px;}
+.pl-container .pl-list-nick a{font-size: 12px; line-height: 28px; color: #14191E;}
+.pl-container .pl-list-content{font-size: 14px; color: #14191E; line-height: 28px; word-wrap: break-word; white-space: pre-wrap; overflow: auto;}
+.pl-container .pl-list-btm{font-size: 12px; color: #B5B9BC; margin-top: 15px;}
+.ipt-fake-focus {border-color: #4d5559; -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(0, 0, 0, 0.4);-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(0, 0, 0, 0.4); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(0, 0, 0, 0.4);}
+.ipt-fake-error {border-color: #f01400;}
+.errortip{background: transparent url("/resources/images/bbs.png") no-repeat scroll -1px -336px; padding-left: 15px; margin: 10px 10px 0px 0px; font-size: 12px; line-height: 20px; color: #BE3948; display: none;}
+.limit-overflow {color: #c33;}
+.unbook{padding: 40px 0px;font-size: 18px;color: #C6C7C9;text-align: center;}
+
+.book-evaluation h3{font-size: 18px; font-weight: 600; line-height: 20px; color: #FF318C; margin-bottom: 20px;}
+.book-evaluation .evaluation-info{padding: 0 20px; background-color: #F6F6F6; line-height: 40px;}
+.book-evaluation .evaluation-info .satisfaction{margin-right: 5px;}
+.book-evaluation .evaluation-info p{float: left; font-size: 12px; color: #787D82; line-height: 40px;}
+.book-evaluation .evaluation-info .satisfaction em{font-weight: 600;}
+.book-evaluation .evaluation-info .star-box{float:left;height: 40px; line-height: 40px; margin-right: 25px;}
+.book-evaluation .evaluation-info .person-num{float: right; color: #B5B9BC; margin-right: 0px;}
+.star-box i.active{color: #F90;}
+.book-evaluation .evaluation{border-bottom: 1px solid #EDF1F2; padding-bottom: 30px;}
+.book-evaluation .evaluation-con{position:relative; padding: 24px 0px 0px 60px;}
+.book-evaluation .evaluation-con .img-box{position: absolute; top: 26px; left: 0px; background-color: #FF318C; width: 40px; height: 40px; border-radius:20px; overflow: hidden;}
+.book-evaluation .evaluation-con .img-box img{display: block;height: 100%;}
+.book-evaluation .evaluation-con .content-box .user-info .username{float: left; margin-right: 10px; color: #787D82; font-size: 12px; text-align: center; line-height: 20px;}
+.book-evaluation .evaluation-con .content-box .content{line-height: 28px; font-size: 14px; color: #14191E; text-align: left; margin-top: 8px; work-break:break-all;}
+.book-evaluation .evaluation-con .content-box .info{margin-top: 10px; color:#B5B9BC; font-size: 12px; line-height: 20px;}
+.info-bar-box a{display: block; color: #FFF; background-color: #FC0371; cursor: pointer;  -webkit-transition: all 0.2s ease-in; -moz-transition: all 0.2s ease-in; -ms-transition: all 0.2s ease-in; -o-transition: all 0.3s ease-in; transition: all 0.4s ease-in; width: 240px; height: 60px; line-height: 60px; text-align: center; font-size: 18px; border: 0px none;}
+.info-bar-box a:hover{background-color: #FC64A7; color: #FFF;}
+.book-infos-main .aside{margin-right: -320px; width: 240px;}
+.book-infos-main .aside h4{padding-bottom: 18px; font-weight: bold; font-size: 16px; border-bottom: 1px  solid #D0D6D9;}
+.book-infos-main .aside .user-info{padding: 20px 0px 20px 90px;}
+.book-infos-main .aside .user-info img{float: left; margin-left: -90px; width: 80px; height: 80px; border-radius: 100%;}
+.book-infos-main .aside .user-info .tit{display: block; margin: 20px 0px 6px;}
+.book-infos-main .aside .user-info .job{font-size: 12px; color: #787D82;}
+.book-infos-main .aside .bd{margin-top: 20px;}
+.book-info-tip{position: relative; padding: 20px; background-color: #EDF1F2; margin-top: 20px;}
+.book-info-tip::before{content: ""; display: block; position: absolute; left: 30px; top: -10px; width: 0px; height: 0px; border-width: 0px 10px 10px;  border: 10px solid transparent; border-top: 0 none;border-bottom-color: #edf1f2;}
+.book-info-tip dt{margin-bottom: 6px; font-weight: bold;}
+.book-info-tip dd{font-size: 12px; line-height: 24px; white-space: pre-line;}
+.autowrap{word-wrap: break-word; word-break: break-all;}
+@Keyframes imageAny{
+	0% {right: 120px;}
+	25% {right:600px;transform:rotate(180deg);}
+	75% {right: 120px;transform:rotate(360deg);}
+	100% {transform:rotate(360deg);}
+}

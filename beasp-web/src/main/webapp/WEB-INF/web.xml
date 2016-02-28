@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+
+	<!-- 配置启动 IOC 容器的 Listener -->
+	<!-- needed for ContextLoaderListener -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:applicationContext.xml</param-value>
+	</context-param>
+
+	<!-- Bootstraps the root web application context before servlet initialization -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- 配置字符编码过滤器 -->
+	<!-- 字符编码过滤器必须配置在所有过滤器的最前面 -->
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- 配置可以把 POST 转为 PUT、DELETE 请求的 filter -->
+	<filter>
+		<filter-name>HiddenHttpMethodFilter</filter-name>
+		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>HiddenHttpMethodFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- 配置 OpenEntityManagerInViewFilter. 可以解决懒加载异常的问题 -->
+	<filter>
+		<filter-name>OpenEntityManagerInViewFilter</filter-name>
+		<filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>OpenEntityManagerInViewFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- 编码过滤 -->
+	<filter>
+        <filter-name>SetCodeFilter</filter-name>
+        <filter-class>org.huel.beasp.web.filter.SetCodeFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SetCodeFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping> 
+    <filter-mapping>
+        <filter-name>SetCodeFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+    
+    <!-- 用户请求过滤 -->
+	<filter>
+        <filter-name>LoginValidateFilter</filter-name>
+        <filter-class>org.huel.beasp.web.filter.LoginValidateFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginValidateFilter</filter-name>
+        <url-pattern>/user/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginValidateFilter</filter-name>
+        <url-pattern>/space/*</url-pattern>
+    </filter-mapping> 
+	
+	<!-- 验证码 -->
+	<servlet>
+   		 <servlet-name>VerifyCodeServlet</servlet-name>
+   	 	 <servlet-class>org.huel.beasp.servlet.VerifyCodeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>VerifyCodeServlet</servlet-name>
+    	<url-pattern>/VerifyCodeServlet.servlet</url-pattern>
+    </servlet-mapping>
+	
+	<!-- 配置 SpringMVC 的 DispatcherServlet -->
+	<!-- The front controller of this Spring Web application, responsible for 
+		handling all application requests -->
+	<servlet>
+		<servlet-name>springDispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- <init-param> <param-name>contextConfigLocation</param-name> <param-value>location</param-value> 
+			</init-param> -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Map all requests to the DispatcherServlet for handling -->
+	<servlet-mapping>
+		<servlet-name>springDispatcherServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

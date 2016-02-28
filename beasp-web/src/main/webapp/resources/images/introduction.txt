@@ -1,0 +1,14 @@
+book/书籍图片
+user/用户头像
+1.home-bg.png:平台banner
+2.index-sj_cc73747-red.png:红色三角
+3.index-sj_cc73747.png:绿色三角(没有用到)
+4.loading-x.gif:加载
+5.logo.png:平台logo
+6.menu_icon.png:用户头像默认显示
+7.pager_sprite.png:上一下and下一页箭头
+8.top_bg.png:回到顶部
+9.space-remind.png:消息提醒
+10.user_card_top.png:用户头像背景
+11.info_s.png:分享图片微信、qq、微博
+user/space/mycourselisticon.png:个人空间图标

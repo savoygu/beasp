@@ -1,0 +1,93 @@
+@CHARSET "UTF-8";
+input,button,textarea,select{ *font-size: 100%; border:none;}
+#main{padding: 20px 0px;}
+.wcontainer{width: 1200px; margin: 0 auto; min-height: 660px;}
+/**个人设置，侧部导航**/
+.setting-left{width: 260px;}
+.wrap-boxes{background: #FFF none repeat scroll 0% 0%;}
+.setting-left li{position: relative; border-bottom: 1px solid #E6E8E9; margin-bottom: -1px;}
+.setting-left li:last-child{ border:none;}
+.setting-left a{display: block; height: 59px; padding-left: 47px; line-height: 59px; font-size: 14px; color: #333; border-color: transparent; transition: color 0s, border-color .2s; -webkit-transition: color 0s, border-color .2s; -moz-transition: color 0s, border-color .2s; -o-transition: color 0s, border-color .2s; -ms-transition: color 0s, border-color .2s;}
+.setting-left a:hover{color: #FF318C;}
+.setting-left .nav-active a{border-left: 2px solid #FF318C; padding-left: 45px;}
+/**个人设置详细信息**/
+.setting-right{margin-left: 280px;}
+.set-space-cont .setting-right-wrap{padding: 30px 60px 30px 0px;}
+.setting-right-wrap {position: relative; min-height: 600px;}
+.setting-profile{padding: 25px 0px 20px 40px;}
+.wlfg-wrap-h {height: 70px;}
+.wlfg-wrap-h175{height: 175px;}
+.wlfg-wrap .label-name{float: left; width: 120px; text-align: right; height: 40px; line-height:40px; color: #656E73; font-size: 14px;}
+.wlfg-wrap .rlf-group{margin-left: 130px;}
+.setting-profile .rlf-input{width: 360px;}
+.rlf-input{border: 1px solid #D0D6D9; height: 24px; line-height: 24px; padding: 7px 7px 7px 48px; font-size: 14px; background: #FFF url("/resources/images/user/settings/rl-sprite.png") no-repeat scroll -80px -678px; box-shadow: 0px 1px 1px rgba(0,0,0,0.075) inset; transition: padding .15s;-webkit-transition: padding .15s; -moz-transition: padding .15s; -o-transition: padding .15s;}
+.rlf-input-nickName{background-position: -80px -726px;}
+.rlf-input-pwd{background-position: -80px -774px;}
+.rlf-tip-wrap{font-size: 12px; height: 30px; line-height: 30px;}
+select{margin: 0px; cursor: pointer; font-weight: normal; background-color: #FFF; border:1px solid #CCC; color: #555; display: inline-block; font-size: 14px; height: 30px; line-height: 30px; padding: 4px 6px; vertical-align: middle;}
+.profile-address select{width: 135px;}
+.rlf-radio-group{padding: 7px 0px 0px 7px; vertical-align: middle;}
+.rlf-radio-group label{margin-right: 20px; font-size: 14px;}
+.rlf-radio-group input{display: inline-block; vertical-align: middle;}
+.textarea{border: 1px solid #D0D6D9; width: 400px; line-height: 1.6em; font-size: 14px; padding: 7px; resize: none; transition:border-color .2s; -webkit-transition:border-color .2s; -moz-transition:border-color .2s; -o-transition:border-color .2s; -ms-transition:border-color .2s;}
+.textarea:focus{border-color: #FF318C;}
+.rlf-btn-purple{color: #FFF; font-size: 14px; background-color: #FF318C; height: 40px; line-height: 40px; cursor: pointer; text-align: center; transition: background-color .2s; -webkit-transition: background-color .2s; -moz-transition: background-color .2s; -o-transition: background-color .2s;}
+.rlf-btn-green{color: #FFF; font-size: 14px; background-color: #39B94E; height: 40px; line-height: 40px; width: 160px; cursor: pointer; text-align: center; transition: background-color .2s; -webkit-transition: background-color .2s; -moz-transition: background-color .2s; -o-transition: background-color .2s;}
+.rlf-btn-blue{color: #FFF; font-size: 14px; background-color: #58b9e6; height: 40px; line-height: 40px; width: 140px; cursor: pointer; text-align: center; transition: background-color .2s; -webkit-transition: background-color .2s; -moz-transition: background-color .2s; -o-transition: background-color .2s;}
+.btn-block{display: block; width: auto;}
+.profile-btn{width: 417px;}
+.rlf-btn-purple:hover{background-color: #FC0F76; color: #FFF;}
+.rlf-btn-green:hover{background-color: #33a646; color: #FFF;}
+.rlf-btn-blue:hover{background-color: #2ea7e0; color: #FFF;}
+.errorClass{height: 30px;line-height: 30px; color: #F01400;}
+/**头像上传**/
+.setting-avator{padding: 60px 150px; text-align: center;}
+.avator-img{position: relative; line-height: 0;}
+.avator-img img{width: 220px; height: 220px; border: medium none; box-shadow: 0px 1px 4px rgba(0,0,0,0.25); border-radius: 2px;}
+.avator-btn-group{position: relative; height: 220px; margin-left: 260px; width: 220px;}
+.avator-btn-inner{position: absolute; bottom: 0px; left: 0px; right: 0px;}
+.avator-btn-inner .avator-btn-wrap{position: relative; height: 40px; margin: 0px; overflow: hidden;}
+.avator-btn-inner .avator-btn-fake:link{display: block; height: 40px; line-height: 40px; color: #FFF; background: #363D40 none repeat scroll 0% 0%; text-align: center;}
+.avator-btn-wrap input{position: absolute; top: -3px; right: -3px; font-size: 50px; background: transparent none repeat scroll 0% 0%; opacity: 0; cursor: pointer;}
+/**邮箱验证**/
+.setting-verify{padding: 30px 60px 120px; text-align: center;}
+.setting-verify h1{font-size: 18px;}
+.setting-verify p{font-size: 20px; margin: 14px 0px 20px;}
+.setting-verify p.avtivateEmailMsg{font-size: 14px; color: #FF0000; height: 20px;}
+.setting-verify .verify-un{display: inline-block; color: #FCB700; padding-bottom: 6px; font-size: 14px;}
+.verified-status{color: #2EA7E0; font-size: 14px;}
+.verified-status i{display: inline-block; width: 60px; height: 60px; margin-bottom: 10px; background: transparent url("/resources/images/user/settings/validmail-icon.png") no-repeat scroll 0% 0%;}
+/**发送成功**/
+.wwrap{padding: 20px;}
+.wheader-wrap{padding-bottom: 20px; border-bottom: 1px solid #D0D6D9;}
+.wheader-wrap h1{color: #4D5559; font-size: 18px; line-height: 100%;}
+.result-container{padding: 80px 0px; text-align: center;}
+.sent-success i{width: 157px; height: 72px; margin-left: -50px; display: inline-block; background: transparent url("/resources/images/user/settings/bigmail.png")}
+.result-container h1{font-size: 24px; margin: 20px 0px; color: #333;}
+.result-container p{font-size: 14px;}
+.mail-label{margin-left: 30px;}
+.sent-again{padding: 10px 0px;}
+.sent-again span.resend{color: #39B94E; cursor: pointer;}
+.bottom{width: 800px; margin: 30px auto; border-top: 1px solid #D0D6D9;}
+.bottom .sbtn-green{margin-top: 30px;}
+.sbtn-green:link, .sbtn-green:visited{display: inline-block; width: 120px; background: #39B94E none repeat scroll 0% 0%; color: #FFF;}
+.sbtn-green:hover, .sbtn-green:active{color: #fff; background: #33a646;}
+.bottom .link-goback{display: inline-block; margin: 30px 0px 0px 30px; color: #FFF; font-size: 14px; background-color: #333; height: 40px; line-height: 40px; width: 120px; cursor: pointer; text-align: center; transition: background-color 0.2s ease 0s;}
+.bottom .link-goback:hover{background-color: #444;}
+/**验证结果界面**/
+.pwd-reset-result{width: 300px; margin: 100px auto; text-align: center;  font-size: 14px;}
+.pwd-rsterror-icon{display: inline-block; width: 120px; height: 120px; background: url("/resources/images/user/settings/rl-sprite.png") no-repeat 0 0;}
+.pwd-rstsuc-icon{display: inline-block; width: 120px; height: 120px; background: url("/resources/images/user/settings/rl-sprite.png") no-repeat 0 -130px;}
+.pwd-reset-result p{color: #656e73;}
+.pwd-rstsuc-txt{font-size: 24px;}
+.pwd-rst-msg{padding: 5px 0px;}
+.pwd-rstsuctm-wrap{color: #c9394a; font-weight: normal;}
+.pwd-rstsuc-inner{padding: 20px 0px 45px;}
+.pwd-reset-result .rlf-btn-green{color: #fff;}
+/**修改密码**/
+.pwd-reset-wrap{width: 550px; margin: 100px auto;}
+.setting-resetpwd{margin: 0px; padding: 30px 60px 60px 70px;}
+.setting-resetpwd .rlf-input{width: 360px;}
+.rlf-input:focus { /* border-color: #7BD089; */ border-color: #FF318C; box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 6px #C6EBCC;}
+.pwdMsg{margin-left: 130px; color: #F01400; height: 24px; font-size: 14px;}
+.successMsg{color: #39B94E;}

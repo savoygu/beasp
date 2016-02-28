@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+/*=======================
+	搜索页内容CSS 开始
+=======================*/
+.jjk20{background-color: #FFF; margin-bottom: 0px;}
+.book-tool-bar{position: relative; margin-top: -1px; padding-right: 15px; height: 40px; background-color: #F9F9F9; border-top: 1px solid #D0D6D9; font-size: 12px;}
+.book-tool-bar .tool-left a.active{color: #FF318C;}
+.book-tool-bar .tool-left a{margin: 0 20px; line-height: 40px;}
+.book-tool-bar .tool-right{color: #787D82;}
+.book-tool-bar .tool-right b{font-weight: normal;}
+.book-tool-bar .tool-item{display: inline-block; line-height: 40px; margin: 0px 8px; vertical-align: middle;}
+/*导航Nav开始*/
+.book-nav-hd {border-bottom: 1px solid #D0D6D9;}
+.book-nav-row{padding: 15px 0px 5px; border-bottom: 1px solid #EDF1F2;}
+.book-nav-row .hd{width: 56px; height: 20px; line-height: 20px; font-size: 12px; color: #787D82; text-align: right;}
+.book-nav-row .bd{margin-left: 70px;}
+.book-nav-item {display: inline-block; margin: 0px 13px;}
+.book-nav-item a{display: block; height: 20px; line-height: 20px; margin-bottom: 10px; padding: 0px 6px; font-size: 12px;}
+.book-nav-item.on a {background: #FF318C;color: #fff;}
+/*导航Nav结束*/
+
+/*分页CSS开始*/
+.book-tool-bar .page-cur{color:#FF318C;}
+.book-tool-bar .page-action{display: inline-block; vertical-align: middle; margin-left: 5px; width: 20px; height: 20px; border: 1px solid #C8CDD2; background-image: url("/resources/images/pager_sprite.png"); background-repeat: no-repeat;}
+.book-tool-bar .page-action:hover{border-color: #FF318C;}
+.book-tool-bar .page-action.disable{border-color: #C8CDD2; opacity: 0.6; filter: alpha(opacity=60); cursor: default;}
+.book-tool-bar .pager-prev{background-position: 6px 4px;}
+.book-tool-bar .pager-prev:hover {background-position: -12px 4px;}
+.book-tool-bar .pager-next{background-position: 6px -14px;}
+.book-tool-bar .pager-next:hover {background-position: -12px -14px;}
+/*分页CSS结束*/
+.book-list{padding: 10px 0px 20px; position: relative; min-height: 500px;}
+.book-list ul{margin: 0px -20px 0px -60px;}
+.book-list ul{margin-left: -5%;}
+.book-list .book-one{position: relative;}
+.book-list li{width: 280px; padding-left: 1.5625%; padding-right: 1.5625%; margin-left: 3.125%;}
+.book-list li{background-color: #FFF none repeat scroll 0% 0%; border-radius: 0px 0px 1px 1px; float: left; margin: 0px 0px 8px 40px; height: 270px; padding: 20px; position: relative; -moz-transition: box-shadow 0.3s; -webkit-transition: box-shadow 0.3s; -o-transition: box-shadow 0.3s; transition: box-shadow 0.3s;}
+.book-list li:hover{-webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);}
+.book-list li .book-list-img{width:auto; height:auto; max-height: 135px; overflow: hidden; position: relative;}
+.book-list li .book-list-img img{display: block; width: 240px; transition: 1s; -moz-transition: 1s; -webkit-transition: 1s; -o-transition: 1s;}
+.book-list li h5{margin: 18px 0px 0px; height: 18px; line-height: 18px; color: #14191E; text-align: left; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.book-list li .tips{margin: 0px; padding: 0px; font-size: 12px; color: #B4BBBF;}
+.book-list li .tips p{margin: 8px 0px;}
+.text-ellipsis{overflow: hidden;text-overflow: ellipsis; white-space: nowrap;}
+.book-list .tips span{color: #787D82;}
+.book-list .tips .update-lastest, .book-list .tips .book-state, .book-list .tips .collection{color:#FF318C; font-size: 14px; font-style: italic;}
+.book-list .tips .update-lastest i, .book-list .tips .collection i{font-size: 13px;}
+.book-list .time-label, .book-list .user-label{border-radius: 2px; position: absolute;  height: 24px;line-height: 24px; color: #FFF; padding: 0px 3px; visibility: hidden; background-color: rgba(0,0,0,0.5);opacity:0; -webkit-transform: translateX(10px); -ms-transform: translateX(10px); transform: translateX(10px); -webkit-transition: .3s; transition: .3s;}
+.book-list .time-label{right: 25px; top: 25px; font-size: 12px; }
+.book-list li:hover .time-label,.book-list li:hover .user-label{visibility: visible; opacity: 1;-webkit-transform: translateX(0); -ms-transform: translateX(0); transform: translateX(0);}
+.book-list .user-label{bottom: 20px; left: 20px; font-size: 14px; padding:0px 8px;  -webkit-transform: translateX(-10px); -ms-transform: translateX(-10px); transform: translateX(-10px); -webkit-transition: .3s; transition: .3s;}
+.book-list .user-label a{color: #FFF;}

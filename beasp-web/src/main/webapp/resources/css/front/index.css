@@ -1,0 +1,27 @@
+/*=================
+	首页内容CSS
+==================*/
+/*平台内容部分*/
+.m, .mn { z-index: 2; position: relative; margin-top: 255px; background-color: #FFF; position: relative; padding-left: 0px; padding-right: 0px; padding-top: 20px; }
+.bod { padding-bottom: 50px; }
+.hot-book ul{height: 42px; box-shadow: 0px 1px 3px rgba(0,0,0,0.07); }
+.hot-book ul li{width: 250px; float: left; text-align: center; font-size: 14px; color: #666; padding: 10px 0;cursor: pointer;}
+.hot-book ul li.on{border-bottom: 2px solid #FF318C; background: transparent url("/resources/images/index-sj_cc73747-red.png") no-repeat scroll center bottom / 10px 4px; color: #FF318C;}
+#hot-bookbox .book-list ul{width: 1020px;}
+#hot-bookbox .book-list ul li {float: left; margin-right: 20px; margin-bottom: 20px;width: 235px; height: 253px;  box-shadow: 1px 1px 3px #D9D9D9; background-color: #FFF; position: relative;}
+#hot-bookbox .book-list ul li:HOVER{cursor:pointer;}
+.book-list .bookimg-box{width: 235px; height: 130px;}
+.book-list .bookimg-box .bookimg{width: 100%; height: 130px;}
+.book-list .book-info{padding: 10px;}
+.book-list .book-info .book-info-h2{font-size: 14px; color:#333; line-height:18px; margin-bottom:12px; height: 36px; overflow: hidden;}
+.book-cover-stat{padding: 7px 15px; background-color: #F6F6F6; border-radius: 0px 0px 3px 3px; border-top: 1px solid #E7E7E7; color: #8B8B8C; position: relative; height: 36px;}
+.book-cover-stat span { font-size: 16px; color: #FF318C;font-style: italic; font-family: "Arial";}
+.cover-yh { position: absolute; right: 1px; top: 1px; border-left: 1px solid #ddd; color: #aaa; cursor: default; width: 29px; line-height: 34px; height: 35px; transition: color 0.15s linear; text-align: center; font-size: 14px; }
+.cover-yh a { color: #8B8B8C; }
+.cover-yh a:hover { color: #2D2D2D; text-decoration: none; }
+.book-cover-c{display: block; text-decoration: none; color: #666; width:235px;padding-left: 15px; padding-right: 15px;;height: 35px; line-height: 35px;}
+.book-cover-btn{z-index: 5;width:80px; height:40px;text-align:center; line-height:40px; background-color:#FF318C; position:absolute; top:70%; margin-top:-2px;  left:60%;  border-radius:60px; display: none;}
+.book-cover-btn a{text-decoration: none; color: #FFF; font-size: 16px; font-weight: 700; font-style: italic; display: block; border-radius:60px;}
+.zzc{position: absolute; top: 0; left: 0; width: 235px; height: 218px; -webkit-transition: all 0.4s ease-in; -moz-transition: all 0.4s ease-in; -ms-transition: all 0.4s ease-in; -o-transition: all 0.3s ease-in; transition: all 0.4s ease-in;}
+/* #hot-bookbox .book-list ul li:HOVER .zzc{background-color: #ccc; opacity: 0.3; z-index: 2;} */
+.zzc-other{background-color: #ccc; opacity: 0.3; z-index: 2;}
