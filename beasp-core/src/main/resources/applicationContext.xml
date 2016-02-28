@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+	
+	<!-- 配置自动扫描的包 -->
+	<context:component-scan base-package="org.huel.beasp">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+	</context:component-scan>
+	
+	<!-- 配置数据源 -->
+	<context:property-placeholder location="classpath:db.properties"/>
+	
+	<bean id="dataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="user" value="${jdbc.user}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="driverClass" value="${jdbc.driverClass}"></property>
+		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+	</bean>
+	
+	<!-- 配置 JPA 的 EntityManagerFactory -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>	
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
+		</property>
+		<property name="packagesToScan" value="org.huel.beasp"></property>
+		<property name="jpaProperties">
+			<props>
+				<!-- 生成的数据表的列的映射策略 -->
+				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+				<!-- hibernate 基本属性 -->
+				<!-- 数据库方言 -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<!-- 是否显示及格式化SQL -->
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<!-- 生成数据表的策略 -->
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<!-- 二级缓存相关 -->
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+				<prop key="net.sf.ehcache.configurationResourceName">ehcache-hibernate.xml</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<!-- 全文检索 -->
+				<prop key="hibernate.search.default.directory_provider">filesystem</prop>
+				<prop key="hibernate.search.default.indexBase">f:/index</prop>
+			</props>
+		</property>
+		<!-- 二级缓存只作用在加 @Cacheable 注解的bean -->
+		<property name="sharedCacheMode" value="ENABLE_SELECTIVE"></property>
+	</bean>
+	
+	<!-- 配置事务 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"></property>	
+	</bean>
+	
+	<!-- 配置支持基于注解的事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<!-- 配置SpringData -->
+	<jpa:repositories base-package="org.huel.beasp"
+		entity-manager-factory-ref="entityManagerFactory"
+		repository-impl-postfix="Impl"></jpa:repositories>
+	
+	<!-- 全文检索方案二、整合Hibernate Search -->
+	
+	
+	<!-- 全文检索方案一、整合Compass -->
+	<!-- <bean id="compass" class="org.compass.spring.LocalCompassBean">
+		<property name="classMappings">
+			<list>
+				<value>org.huel.beasp.entity.book.Book</value>
+				<value>org.huel.beasp.entity.book.Style</value>
+				<value>org.huel.beasp.entity.book.Category</value>
+			</list>
+		</property>
+		<property name="compassSettings">
+			<props>
+				<prop key="compass.engine.analyzer.default.type">net.paoding.analysis.analyzer.PaodingAnalyzer</prop>
+				<prop key="compass.engine.connection">file://f:/index</prop>
+				在内存中建立索引
+				<prop key="compass.engine.connection">ram://index</prop>
+
+				<prop key="compass.engine.highlighter.default.formatter.simple.pre"><![CDATA[<span class='highlight'>]]></prop>
+				<prop key="compass.engine.highlighter.default.formatter.simple.post"><![CDATA[</span>]]></prop>
+				<prop key="compass.transaction.factory">org.compass.spring.transaction.SpringSyncTransactionFactory</prop>
+			</props>
+		</property>
+		<property name="transactionManager" ref="transactionManager" />
+	</bean> -->
+	<!-- 自动完成 索引的添加/更新/删除操作-->
+	<!-- <bean id="compassGps" class="org.compass.gps.impl.SingleCompassGps" init-method="start" destroy-method="stop">
+		<property name="compass" ref="compass" />
+		<property name="gpsDevices">
+			<list>
+				针对hibernate的GPS 驱动
+				<bean class="org.compass.spring.device.hibernate.dep.SpringHibernate3GpsDevice">
+					<property name="name" value="HibernateDevice"/>
+					<property name="sessionFactory" ref="sessionFactory"/>
+				</bean>
+				设置JPA驱动
+				<bean class="org.compass.gps.device.jpa.JpaGpsDevice">
+						<property name="name" value="jpaDevice" />
+						<property name="entityManagerFactory" ref="entityManagerFactory" />
+						<property name="injectEntityLifecycleListener" value="true"/>
+				</bean>
+			</list>
+		</property>
+	</bean>	 -->
+	
+</beans>

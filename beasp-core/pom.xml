@@ -1,0 +1,146 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+  	<groupId>org.huel.beasp</groupId>
+  	<artifactId>beasp-parent</artifactId>
+  	<relativePath>../beasp-parent/pom.xml</relativePath>
+  	<version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>beasp-core</artifactId>
+  <packaging>jar</packaging>
+
+  <name>beasp-core</name>
+  <url>http://maven.apache.org</url>
+
+  <dependencies>
+    <!-- 测试 相关 jar 包 -->
+ 	<dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+   <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-test</artifactId>
+	</dependency>
+    
+    <!-- Spring 相关 jar 包 -->
+    <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-core</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-beans</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-aop</artifactId>
+	</dependency>	
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-orm</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+	</dependency>
+		
+	 <!-- Hibernate 相关 jar 包 -->
+    <dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-core</artifactId>
+	</dependency>
+    
+    <!-- JPA 相关jar 包 -->
+    <dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-entitymanager</artifactId>
+	</dependency>
+    
+    <!-- SpringData 相关 jar 包 -->
+    <dependency>
+		<groupId>org.springframework.data</groupId>
+		<artifactId>spring-data-jpa</artifactId>
+	</dependency>
+    
+    <!-- 数据库驱动相关 jar 包 -->
+    <dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+	</dependency>
+	
+	<!-- 数据库连接池相关 jar 包 -->
+	<dependency>
+		<groupId>commons-dbcp</groupId>
+		<artifactId>commons-dbcp</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-c3p0</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-ehcache</artifactId>
+	</dependency>
+	
+	<!-- Servlet 相关 jar 包 -->
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>servlet-api</artifactId>
+	</dependency>
+	<!-- 邮箱验证 相关的 jar 包 -->
+	<dependency>
+		<groupId>javax.mail</groupId>
+		<artifactId>mail</artifactId>
+	</dependency>
+	
+	<!-- Base64 加密与解密 相关jar包 -->
+	<dependency>
+		<groupId>commons-codec</groupId>
+		<artifactId>commons-codec</artifactId>
+	</dependency>
+	
+	<!-- 全文检索方案一、Compass-->
+	<!-- <dependency>
+		<groupId>org.compass-project</groupId>
+		<artifactId>compass</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>net.paoding</groupId>
+		<artifactId>paoding</artifactId>
+	</dependency> -->
+	<!-- 全文检索方案二、Hibernate Search-->
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-search-orm</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.lucene</groupId>
+		<artifactId>lucene-analyzers-smartcn</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.lucene</groupId>
+		<artifactId>lucene-highlighter</artifactId>
+	</dependency>
+  </dependencies>
+  
+  <build>
+  	<plugins>
+  		<plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-compiler-plugin</artifactId>
+	     </plugin>
+	     <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+		</plugin>
+  	</plugins>
+  </build>
+</project>
