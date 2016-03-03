@@ -27,6 +27,12 @@ public class ShareService {
 	@Autowired private BookRepository bookRepository;
 	
 	@Transactional(readOnly=true)
+	public Page<Share> findAll(int pageNo, int pageSize) {
+		Pageable pageable = new PageRequest(pageNo-1, pageSize, Direction.DESC, "applyTime", "id");
+		return shareRepository.findAll(pageable);
+	}
+	
+	@Transactional(readOnly=true)
 	public Share getByTargetId(Integer bookId) {
 		return shareRepository.getByTarget_Id(bookId);
 	}

@@ -39,6 +39,12 @@
 					<li><a href="<%=userAdminPath%>/users?status=2">&gt;&nbsp;&nbsp;删除用户列表</a></li>
 				</ul>
 			</li>
+			<li class=""><div class="link"><i class="fa fa-globe"></i>书籍交换与分享管理<i class="fa fa-chevron-down"></i></div>
+				<ul class="submenu" style="display: none;">
+					<li><a href="<%=bookAdminPath%>/books/exchange">&gt;&nbsp;&nbsp;书籍交换列表</a></li>
+					<li><a href="<%=bookAdminPath%>/books/share">&gt;&nbsp;&nbsp;书籍分享列表</a></li>
+				</ul>
+			</li>
 		</ul>
 		<%-- <ul class="nav navContent-menu">
 			<li class="active"><a href="#">首页</a></li>

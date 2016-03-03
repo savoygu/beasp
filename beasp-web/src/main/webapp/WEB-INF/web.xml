@@ -82,7 +82,7 @@
 	<!-- 验证码 -->
 	<servlet>
    		 <servlet-name>VerifyCodeServlet</servlet-name>
-   	 	 <servlet-class>org.huel.beasp.servlet.VerifyCodeServlet</servlet-class>
+   	 	 <servlet-class>org.huel.beasp.web.servlet.VerifyCodeServlet</servlet-class>
     </servlet>
     <servlet-mapping>
     	<servlet-name>VerifyCodeServlet</servlet-name>

@@ -77,7 +77,19 @@
 				<artifactId>spring-webmvc</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-
+			
+			<!-- websocket -->
+			<dependency>  
+			   <groupId>org.springframework</groupId>  
+			   <artifactId>spring-websocket</artifactId>    
+			   <version>${spring.version}</version>
+			</dependency>  
+			<dependency>  
+			   <groupId>org.springframework</groupId>  
+			   <artifactId>spring-messaging</artifactId>
+			   <version>${spring.version}</version>   
+			</dependency>
+		
 			<!-- Hibernate 相关 jar 包 -->
 			<dependency>
 				<groupId>org.hibernate</groupId>
@@ -165,6 +177,7 @@
 				<artifactId>jackson-mapper-asl</artifactId>
 				<version>1.9.13</version>
 			</dependency>
+			
 			<!-- 文件上传 相关的 jar 包 -->
 			<dependency>
 				<groupId>commons-io</groupId>

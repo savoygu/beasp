@@ -48,7 +48,13 @@
 						
 					</div>
 					<div class="page-header">
-						<h3>书籍编号：${book.id }（<font color="red">${book.state.name }</font>）<small class="pull-right">发布时间：${book.createTime }&nbsp;&nbsp;<a href="" class="btn btn-info">书籍列表</a></small></h3>
+						<h3>书籍编号：${book.id }（<font color="red">${book.state.name }</font>）
+							<small class="pull-right">发布时间：${book.createTime }&nbsp;&nbsp;
+								<a href="<%=bookAdminPath %>/books" class="btn btn-info">书籍列表</a>
+								<a href="<%=bookAdminPath %>/books/exchange" class="btn btn-info">交换列表</a>
+								<a href="<%=bookAdminPath %>/books/share" class="btn btn-info">分享列表</a>
+							</small>
+						</h3>
 					</div>
 					<form:form action="/control/order/Order-list" method="post">
 						<table class="table table-bordered table-hover" style="text-align:center;">
@@ -79,7 +85,7 @@
 								<td>上传者联系方式</td>
 								<td>${book.user.phone }</td>
 								<td>地址</td>
-								<td>${book.user.province },${book.user.city },${book.user.area }</td>
+								<td>${book.user.province },${book.user.city },${book.user.school }</td>
 							</tr>
 						</table>
 					</form:form>

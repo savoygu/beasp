@@ -27,6 +27,12 @@ public class ExchangeService {
 	@Autowired private BookRepository bookRepository;
 
 	@Transactional(readOnly=true)
+	public Page<Exchange> findAll(int pageNo, int pageSize) {
+		Pageable pageable = new PageRequest(pageNo-1, pageSize, Direction.DESC, "applyTime", "id");
+		return exchangeRepository.findAll(pageable);
+	}
+	
+	@Transactional(readOnly=true)
 	public boolean getCountByTarget_IdAndResultIn(Integer id) {
 		if(exchangeRepository.getCountByTarget_Id(id) > 0) {//说明该书籍被交换过
 			if(exchangeRepository.getCountByTarget_IdAndResultIn(id, Arrays.asList(0,1)) > 0) {//说明该书籍被正在交换中，或交换成功

@@ -62,7 +62,7 @@
 							<td>School</td>
 							<td>省</td>
 							<td>市</td>
-							<td>区</td>
+							<!-- <td>区</td> -->
 							<td>注册时间</td>
 							<td>状态</td>
 							<td>头像</td>
@@ -86,10 +86,17 @@
 										<td>${user.school }</td>
 										<td>${user.province }</td>
 										<td>${user.city }</td>
-										<td>${user.area }</td>
+										<%-- <td>${user.area }</td> --%>
 										<td><fmt:formatDate value="${user.createTime }" type="both"/></td>
 										<td><c:if test="${user.status eq 0 }">可用</c:if><c:if test="${user.status eq 1 }">锁定</c:if><c:if test="${user.status eq 1 }">删除</c:if></td>
-										<td>${book.photoName}</td>
+										<td>
+											<c:if test="${empty user.photoName }">
+												<img alt="${user.userName }" src="<%=imgPath %>/user/default/40x/5458505c00018e9202200220-40-40.jpg" height="40" width="40">
+											</c:if>
+											<c:if test="${!empty user.photoName }">
+												<img alt="${user.userName }" src="<%=beaspPath %>${user.image40FullPath}" height="40" width="40">
+											</c:if>
+										</td>
 										<td>
 											<a href="<%=userAdminPath %>/user/${user.id}" class="delete"><i class="fa fa-remove" ></i></a>
 											<input type="hidden" value="${user.userName }"/>
