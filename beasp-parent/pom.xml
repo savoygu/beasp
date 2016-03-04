@@ -15,6 +15,7 @@
 		<spring.version>4.2.1.RELEASE</spring.version>
 		<hibernate.version>4.3.11.Final</hibernate.version>
 		<jackson.version>2.2.2</jackson.version>
+		<jfreechart.version>1.0.19</jfreechart.version>
 		<java.home>D:\Eclipse\Java\jdk1.7.0_45</java.home>
 	</properties>
 
@@ -234,6 +235,17 @@
 				<artifactId>lucene-highlighter</artifactId>
 				<version>4.10.4</version>
 			</dependency>
+			<!-- jfreechart 标签 相关 jar 包 -->
+			<dependency>
+				<groupId>org.jfree</groupId>
+				<artifactId>jfreechart</artifactId>
+				<version>${jfreechart.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>jfree</groupId>
+				<artifactId>jfreechart</artifactId>
+				<version>1.0.9</version>
+			</dependency>
 		</dependencies>
 
 	</dependencyManagement>
@@ -256,6 +268,63 @@
 					</configuration>
 				</plugin>
 				<plugin>
+				      <groupId>org.eclipse.jetty</groupId>
+				      <artifactId>jetty-maven-plugin</artifactId>
+				      <version>9.2.8.v20150217</version>
+				      <configuration>
+						<!-- 端口配置: jetty 默认使用的端口是 8080，命令行的方式修改端口的命令是：mvn -Djetty.port=8081 jetty:run 。pom.xml 配置方式如下： -->
+		  				<httpConnector>
+							<port>80</port>
+		  				</httpConnector>
+				      	<!-- 启动 & 停止 : -->
+				    	<stopKey>shutdown</stopKey>
+		  				<stopPort>9966</stopPort>
+		  				<!-- 自动热部署: 默认值是 0。大于 0 的数值表示开启，0 表示关闭，单位为秒。以配置数值为一个周期，自动的扫描文件检查其内容是否有变化，如果发现文件的
+		内容被改变，则自动重新部署运用。命令行的方式：mvn -Djetty.scanIntervalSeconds=2 jetty:run 。 -->
+		  				<!-- <scanIntervalSeconds>2</scanIntervalSeconds> -->
+		  				<!-- 手动重加载: 默认值为 automatic，它与大于 0 的 scanIntervalSeconds 节点一起作用，实现自动热部署的工作。设为 manual 的好处是，当你改变文件
+		内容并保存时，不会马上触发自动扫描和重部署的动作，你还可以继续的修改，直至你在 Console 或命令行中敲回车键（Enter）的时候才触发重
+		新加载的动作。这样可以更加的方便调试修改。命令行的方式是：mvn -Djetty.reload=manual jetty:run 。 -->
+		  				<reload>manual</reload>
+		  				<dumpOnStart>true</dumpOnStart>
+						  <webApp>
+							  <!-- WEB上下文: contextPath 的默认值的 /，${project.artifactId} 引用了 <artifactId> 节点的值，即项目的名称。 -->
+							  <!-- <contextPath>/${project.artifactId}</contextPath> -->
+							  <contextPath>/</contextPath>
+							  <!-- 项目的静态资源文件目录默认是 src/main/webapp，如果静态资源目录有多个，或者不在默认的 src/main/webapp 目录下，可做如下配置： -->
+							  <!-- 引用静态资源文件时，路径不包含资源目录的名称，如 commons/main.css，引用方式为：<link href="main.css" rel="stylesheet" />  -->
+						      <!-- <resourceBases>
+						      <resourceBase>${project.basedir}/src/main/webapp</resourceBase>
+						      <resourceBase>${project.basedir}/commons</resourceBase>
+						    </resourceBases> -->
+						  </webApp>
+						  <!-- 访问日志: org.eclipse.jetty.server.NCSARequestLog 是 org.eclipse.jetty.server.RequestLog 的一个实现类。
+								org.eclipse.jetty.server.NCSARequestLog 是一种伪标准的 NCSA 日志格式。下面是一些节点参数的解释：
+								filename：日志文件的名称
+								filenameDateFormat：日志文件的名称的日期格式，它要求日志文件名必须含有 yyyy_mm_dd 串
+								logDateFormat：日志内容的时间格式
+								logTimeZone：时区
+								append：追加到日志
+								logServer：记录访问的主机名
+								retainDays：日志文件保存的天数, 超过删除
+								logCookies：记录 cookies
+								启动 jetty 服务，在项目的 target 目录下会生成一个 access-2015_06_23.log 文件，该文件中的其中一条记录如下：
+								localhost 0:0:0:0:0:0:0:1 - - [2015-06-23 01:17:05] "GET /css/main.css HTTP/1.1" 304 - 
+								"http://localhost:8081/"  "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) 
+								Chrome/35.0.1916.153 Safari/537.36 SE 2.X MetaSr 1.0" "JSESSIONID=2gyikovul2iz168116l2afo4f" -->
+		  				<requestLog implementation="org.eclipse.jetty.server.NCSARequestLog">
+						    <filename>target/access-yyyy_mm_dd.log</filename>
+						    <filenameDateFormat>yyyy_MM_dd</filenameDateFormat>
+						    <logDateFormat>yyyy-MM-dd HH:mm:ss</logDateFormat>
+						    <logTimeZone>GMT+8:00</logTimeZone>
+						    <append>true</append>
+						    <logServer>true</logServer>
+						    <retainDays>120</retainDays>
+						    <logCookies>true</logCookies>
+						  </requestLog>
+				      </configuration>
+				</plugin>
+				<!-- <plugin>
 				  <groupId>org.mortbay.jetty</groupId>
 				  <artifactId>jetty-maven-plugin</artifactId>
 				  <configuration>
@@ -271,7 +340,7 @@
 				       </connector>
 				     </connectors>
 				  </configuration>
-				</plugin>
+				</plugin> -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>

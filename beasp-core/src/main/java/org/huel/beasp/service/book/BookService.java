@@ -38,6 +38,21 @@ public class BookService{
 	@Autowired private BookRepository bookRepository;
 	
 	@Transactional(readOnly=true)
+	public List<Book> getTop10ByOrderByBrowseDesc() {
+		return bookRepository.getTop10ByOrderByBrowseDesc(new PageRequest(0, 10));
+	}
+	
+	@Transactional(readOnly=true)
+	public List<Book> getTop10ByOrderByCollectionDesc() {
+		return bookRepository.getTop10ByOrderByCollectionDesc(new PageRequest(0, 10));
+	}
+	
+	@Transactional(readOnly=true)
+	public List<Book> getTop10ByOrderByPraiseDesc() {
+		return bookRepository.getTop10ByOrderByPraiseDesc(new PageRequest(0, 10));
+	}
+	
+	@Transactional(readOnly=true)
 	public List<Book> getByUserIdAndState(Integer userId, State state) {
 		return bookRepository.getByUser_IdAndState(userId, state);
 	}

@@ -116,12 +116,22 @@
 		<groupId>org.apache.lucene</groupId>
 		<artifactId>lucene-highlighter</artifactId>
 	</dependency>
+	<!-- jfreechart 标签 相关 jar 包 -->
+	<!-- <dependency>
+		<groupId>org.jfree</groupId>
+		<artifactId>jfreechart</artifactId>
+	</dependency> -->
+	<dependency>
+		<groupId>jfree</groupId>
+		<artifactId>jfreechart</artifactId>
+		<version>1.0.9</version>
+	</dependency>
   </dependencies>
   <build>
     <finalName>beasp-web</finalName>
     <plugins>
     	<plugin>
-		   <groupId>org.mortbay.jetty</groupId>
+		   <groupId>org.eclipse.jetty</groupId>
 		   <artifactId>jetty-maven-plugin</artifactId>
 		</plugin>
     </plugins>

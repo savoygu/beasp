@@ -58,6 +58,12 @@ public class BookRepositoryTest {
 	@Autowired private ExchangeRepository exchangeRepository;
 	@Autowired private ExchangeService exchangeService;
 	
+	
+	@Test
+	public void testgetTop10ByOrderByCollectionDesc() {
+		print(bookService.getTop10ByOrderByCollectionDesc());
+	}
+	
 	@Test
 	public void testfindByUser_Id() {
 		for(Exchange exchange : exchangeService.findByUserId(7, 1, 5).getContent()) {

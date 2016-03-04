@@ -24,6 +24,15 @@ import org.springframework.data.repository.query.Param;
 public interface BookRepository extends JpaRepository<Book, Integer>, 
 	JpaSpecificationExecutor<Book>, BookDao{
 	
+	@Query("select b from Book b left join fetch b.category c left join fetch b.user u order by b.praise desc")
+	public List<Book> getTop10ByOrderByPraiseDesc(Pageable pageable);
+	
+	@Query("select b from Book b left join fetch b.category c left join fetch b.user u order by b.browse desc")
+	public List<Book> getTop10ByOrderByBrowseDesc(Pageable pageable);
+	
+	@Query("select b from Book b left join fetch b.category c left join fetch b.user u order by b.collection desc")
+	public List<Book> getTop10ByOrderByCollectionDesc(Pageable pageable);
+	
 	/**
 	 * 获取用户指定状态的所有书籍
 	 * @param userId

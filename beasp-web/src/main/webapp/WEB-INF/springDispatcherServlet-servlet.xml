@@ -3,19 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:websocket="http://www.springframework.org/schema/websocket"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
-		http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
-
-	<!-- <bean id="websocket" class="org.huel.beasp.web.socket.WebsocketEndPoint"/>  
-    <websocket:handlers>  
-	    <websocket:mapping path="/websocket" handler="websocket"/>  
-	    <websocket:handshake-interceptors>  
-	   		 <bean class="org.huel.beasp.web.interceptor.HandshakeInterceptor"/>  
-	    </websocket:handshake-interceptors>  
-	</websocket:handlers> -->
 
 	<!-- 配置自动扫描的包 -->
 	
@@ -23,6 +13,14 @@
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>
+	
+	<!-- 自定义图标视图解析器 -->
+	<bean id="chartViewResolver" class="org.huel.beasp.web.chart.ChartViewResolver">
+		<property name="chartSuffix" value=".chart" />
+		<property name="chartView">
+			<bean class="org.huel.beasp.web.chart.ChartView" />
+		</property>
+	</bean>
 	
 	<!-- 配置视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -35,7 +33,13 @@
 	<mvc:annotation-driven></mvc:annotation-driven>
 	
 	<!-- spring-websocket配置start-->
-    <!--  -->  
+    <!-- <bean id="websocket" class="org.huel.beasp.web.socket.WebsocketEndPoint"/>  
+    <websocket:handlers>  
+	    <websocket:mapping path="/websocket" handler="websocket"/>  
+	    <websocket:handshake-interceptors>  
+	   		 <bean class="org.huel.beasp.web.interceptor.HandshakeInterceptor"/>  
+	    </websocket:handshake-interceptors>  
+	</websocket:handlers> -->  
     <!-- spring-websocket配置end-->
   
 	
