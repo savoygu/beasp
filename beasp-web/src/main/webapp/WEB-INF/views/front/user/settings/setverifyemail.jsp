@@ -63,13 +63,13 @@
 				if($this.text() == "正在发送...") return;
 				$this.text("正在发送...");
 				$.ajax({
-					url:"/beasp/user/verificationmail",
+					url:"/user/verificationmail",
 					data:{email:email},
 					dataType:"json",
 					success:function(data) {
 						if(data.status == 0) {
 							layer.msg(data.msg, {icon:1, time:2000, shade: [0.8, '#393D49'], shift:4});
-							window.location.href = "/beasp/user/setverifysent";
+							window.location.href = "/user/setverifysent";
 						} else {
 							layer.msg(data.msg, {icon:2, time:2000, shade: [0.8, '#393D49'], shift:6});
 							$this.text("发送验证邮件");

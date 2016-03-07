@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.codec.binary.Base64;
+import org.huel.beasp.entity.book.BookUser;
+import org.huel.beasp.entity.book.State;
 import org.huel.beasp.entity.user.User;
 import org.huel.beasp.exception.BeaspException;
+import org.huel.beasp.service.book.BookUserService;
 import org.huel.beasp.service.user.UserService;
 import org.huel.beasp.web.handler.dto.AjaxOper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,7 @@ public class LoginHandler {
 //	private final static long cookieMaxAge = 60 * 60 * 24 * 10;//10天
 //	private final static String beaspUserCookie = "com.beasp";//保存cookie 时的cookieName
 //	private final static String webKey = "beasp";//加密 cookie 时的网站自定码
+	@Autowired private BookUserService bookUserService;
 	
 	/**
 	 * 注销登录
@@ -58,7 +62,9 @@ public class LoginHandler {
 			 * 2. 保存用户
 			 */
 			try {
-				request.getSession().setAttribute("user", userService.save(user));
+				user = userService.save(user);
+				request.getSession().setAttribute("user", user);
+				getLastestBrowse(request, user);
 			} catch (Exception e) {
 				throw new BeaspException();
 			}
@@ -88,6 +94,7 @@ public class LoginHandler {
 			if(user != null) {
 				//保存用户到 session
 				request.getSession().setAttribute("user", user);
+				getLastestBrowse(request, user);
 			} else {
 				ajaxOper = new AjaxOper(1, "电子邮箱地址或密码错误");
 			}
@@ -95,6 +102,12 @@ public class LoginHandler {
 			ajaxOper = new AjaxOper(1, "电子邮箱地址或密码错误");
 		}
 		return ajaxOper;
+	}
+
+	private void getLastestBrowse(HttpServletRequest request, User user) {
+		//获取用户最近一次浏览的书籍
+		BookUser bu = bookUserService.getTop1ByUserIdAndStateOrderByCreateTimeDesc(user.getId(), State.BROWSE);
+		request.getSession().setAttribute("bu", bu);
 	}
  	
 	/**
@@ -143,6 +156,8 @@ public class LoginHandler {
 			}
 			return "front/user/signin"; 
 		} else {
+			getLastestBrowse(request, user);
+			
 			//保存用户到 session
 			request.getSession().setAttribute("user", user);
 			//获取用户名保存到cookie 中

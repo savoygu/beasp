@@ -12,6 +12,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface BookUserRepository extends JpaRepository<BookUser, Integer>, JpaSpecificationExecutor<BookUser>{
+	
+//	@Query("select bu from BookUser bu left join fetch bu.user u left join fetch bu.book b where u.id=?1 and bu.state=?2 order by bu.createTime desc")
+//	public BookUser getLastestBrowseByUser_Id(Integer userId, State state);
+	
+	public BookUser getTop1ByUser_IdAndStateOrderByCreateTimeDesc(Integer userId, State state);
+	
 	/**
 	 * 按用户 id 和书籍状态查询书籍数量
 	 * @param id

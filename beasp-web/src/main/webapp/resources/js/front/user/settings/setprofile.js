@@ -175,7 +175,7 @@ function validatePhone() {
 	 */
 	var bool = true;
 	$.ajax({
-		url:"/beasp/admin/user/ajaxValidatePhone",
+		url:"/admin/user/ajaxValidatePhone",
 		data:{"phone":value, "time":new Date()},
 		type:"POST",
 		dataType:"json",

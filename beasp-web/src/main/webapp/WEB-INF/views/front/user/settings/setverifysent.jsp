@@ -74,7 +74,7 @@
 				if(!$this.hasClass('resend')) return;
 				$this.html("正在发送...").removeClass('resend');
 				$.ajax({
-					url:"/beasp/user/verificationmail",
+					url:"/user/verificationmail",
 					dataType:"json",
 					data:{email:$this.data("email")},
 					success:function(data) {

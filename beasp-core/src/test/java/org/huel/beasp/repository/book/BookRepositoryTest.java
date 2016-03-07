@@ -58,6 +58,10 @@ public class BookRepositoryTest {
 	@Autowired private ExchangeRepository exchangeRepository;
 	@Autowired private ExchangeService exchangeService;
 	
+	@Test
+	public void testgetLastestBrowseByUser_Id() {
+		System.out.println(bookUserRepository.getTop1ByUser_IdAndStateOrderByCreateTimeDesc(6, State.BROWSE).getBook().getId());
+	}
 	
 	@Test
 	public void testgetTop10ByOrderByCollectionDesc() {

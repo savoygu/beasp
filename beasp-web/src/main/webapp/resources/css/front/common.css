@@ -50,7 +50,7 @@ h1, h2, h3, h4, h5, h6 { font-size: 100%;font-weight: normal;font-family: "Micro
 .nav-custom{height: 50px; width: 100%;background-color: #222222;position: fixed; top: 0px; left: 0px; z-index: 5;}
 .nav-waper{height: 50px; width: 1200px; margin: 0 auto;}
 .nav-waper .nav-header{height: 50px; float: left;}
-.nav-waper .nav-header .nav-logo{display: block; height: 30px; padding: 10px 0px; text-align: center;}
+.nav-waper .nav-header .nav-logo{color: #FFF; display: block; height: 30px; padding: 10px 0px; text-align: center; line-height: 30px; font-size: 18px;}
 .nav-waper .nav-content{height: 50px; float: right;}
 .nav-waper ul li{float: left; }
 .nav-waper .nav-content li > a{display: block; height: 50px; line-height: 50px; padding: 0px 10px;}

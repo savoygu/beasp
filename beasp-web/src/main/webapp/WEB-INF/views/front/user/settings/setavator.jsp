@@ -31,7 +31,12 @@
 						<div class="avator-img l">
 							<div>
 								<%-- <img alt="${user.nickName }" src="http://img.mukewang.com/user/545864490001b5bd02200220.jpg" width="220" height="220"> --%>
-								<img alt="${user.nickName }" src="<%=beaspPath %>${user.imageFullPath}" width="220" height="220">
+								<c:if test="${!empty user.photoName }">
+									<img alt="${user.nickName }" src="<%=beaspPath %>${user.imageFullPath}" width="220" height="220">
+								</c:if>
+								<c:if test="${empty user.photoName }">
+									<img alt="${user.nickName }" src="<%=beaspPath %>${user.defaultImageFullPath}" width="220" height="220">
+								</c:if>
 							</div>
 						</div>
 						<div class="avator-btn-group">

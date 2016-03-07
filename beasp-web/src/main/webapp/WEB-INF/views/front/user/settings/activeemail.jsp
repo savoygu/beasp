@@ -57,11 +57,11 @@
 				var obj = $(".timer-back");
 				var t = $(".timer-back").text()*1;
 				if(!t || t==0) {
-					window.location.href = "/beasp/"
+					window.location.href = "/"
 				} else {
 					function setTimer() {//定时器
 						if(t==0) {
-							window.location.href = "/beasp/"
+							window.location.href = "/"
 						}
 						obj.html(t);
 						t--;

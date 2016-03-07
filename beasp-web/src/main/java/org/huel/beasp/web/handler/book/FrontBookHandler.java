@@ -206,7 +206,8 @@ public class FrontBookHandler {
 				} else {//2.1 如果浏览过
 					bu.setCreateTime(new Date());//设置为当前时间
 				}
-				bookUserService.save(bu);//3.添加关联
+				bu = bookUserService.save(bu);//3.添加关联
+				request.getSession().setAttribute("bu", bu);
 			}
 			//第二步：4.修改书籍浏览数量
 			bookService.updateBookBrowse(book);
@@ -222,6 +223,8 @@ public class FrontBookHandler {
 			map.put("book", book);//当前书籍信息
 			map.put("praise", false);//没有被当前用户点赞
 			map.put("collection", false);//没有被当前用户收藏
+			
+			
 			/**
 			 * 书籍是否被点赞、收藏
 			 */

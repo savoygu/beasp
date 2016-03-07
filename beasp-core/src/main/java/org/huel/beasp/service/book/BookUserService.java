@@ -25,6 +25,17 @@ public class BookUserService {
 	@Autowired private BookRepository bookRepository;
 	
 	/**
+	 * 获取最近一次浏览的书籍
+	 * @param userId
+	 * @param state
+	 * @return
+	 */
+	@Transactional(readOnly=true)
+	public BookUser getTop1ByUserIdAndStateOrderByCreateTimeDesc(Integer userId, State state) {
+		return bookUserRepository.getTop1ByUser_IdAndStateOrderByCreateTimeDesc(userId, state);
+	}
+	
+	/**
 	 * 按用户id 和状态 获取所有书籍
 	 * @return
 	 */
@@ -93,7 +104,7 @@ public class BookUserService {
 	 * @param bookUser
 	 */
 	@Transactional
-	public void save(BookUser bookUser) {
-		bookUserRepository.saveAndFlush(bookUser);
+	public BookUser save(BookUser bookUser) {
+		return bookUserRepository.saveAndFlush(bookUser);
 	}
 }

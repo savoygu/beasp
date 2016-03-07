@@ -143,14 +143,15 @@
 		<!-- 导航菜单 -->
 		<c:set var="menuout" value="" />
 		<c:forEach items="${menucates }" var="cate" varStatus="status">
-				<c:choose>
+			<c:set var="menuout" value="<i class='path-split'>&#92;</i><a href='/book/list/category/${cate.id }'>${cate.name }</a>${menuout }" />
+				<%-- <c:choose>
 					<c:when test="${empty menuout }">
 						<c:set var="menuout" value="<a href='/book/list/category/${cate.id }'>${cate.name }</a>${menuout }" />
 					</c:when>					
 					<c:otherwise>
 						<c:set var="menuout" value="<a href='/book/list/category/${cate.id }'>${cate.name }</a><i class='path-split'>&#92;</i>${menuout }" />
 					</c:otherwise>
-				</c:choose>
+				</c:choose> --%>
 		</c:forEach>
 		<%-- <c:forEach items="${menucates }" var="cate">
 			<c:if test='${cateid!=cate.id }'>
@@ -192,8 +193,7 @@
 						</ol> --%>
 						<div class="path">
 							<a href="<%=beaspPath%>/">首页</a> <i class='path-split'>&#92;</i> <a
-								href="<%=beaspPath%>/book/list/category/0">交换与分享</a> <i
-								class='path-split'>&#92;</i>
+								href="<%=beaspPath%>/book/list/category/0">交换与分享</a> <!-- <i class='path-split'>&#92;</i> -->
 							<c:out value="${menuout }" escapeXml="false"></c:out>
 						</div>
 					</div>
@@ -274,11 +274,11 @@
 									href="javascript:void(0)">上一页<i class="fa fa-angle-left"></i></a>
 							</c:if> <c:if test="${page.number+1 gt 1 }">
 								<a class="page-action pager-prev hide-text"
-									href="?pageNo=${page.number }">上一页<i
+									href="?pageNo=${page.number }<c:if test='${!empty param.is_exchange }'>&is_exchange=${param.is_exchange }</c:if><c:if test='${!empty param.sort}'>&sort=${param.sort }</c:if>">上一页<i
 									class="fa fa-angle-left"></i></a>
 							</c:if> <c:if test="${page.number+1 < page.totalPages }">
 								<a class="page-action pager-next hide-text"
-									href="?pageNo=${page.number+2 }">下一页<i
+									href="?pageNo=${page.number+2 }<c:if test='${!empty param.is_exchange }'>&is_exchange=${param.is_exchange }</c:if><c:if test='${!empty param.sort}'>&sort=${param.sort }</c:if>">下一页<i
 									class="fa fa-angle-right"></i></a>
 							</c:if> <c:if test="${page.number+1 eq page.totalPages }">
 								<a class="page-action pager-next hide-text disable"

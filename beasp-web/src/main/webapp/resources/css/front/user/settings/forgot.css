@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 .sig-head{height: 120px; text-align: center; background-color: #EDF1F2;}
-.sig-img{display: inline-block; height: 46px; width: 136px; background: transparent url("/resources/images/siglogo.png") no-repeat scroll center center; text-indent: 100%; white-space: nowrap; overflow: hidden; margin-top: 37px;}
+/* .sig-img{display: inline-block; height: 46px; width: 136px; background: transparent url("/resources/images/siglogo.png") no-repeat scroll center center; text-indent: 100%; white-space: nowrap; overflow: hidden; margin-top: 37px;} */
+.sig-img{color:#FFF; font-size: 18px; display: inline-block; height: 46px; width: 180px; white-space: nowrap; overflow: hidden; margin-top: 37px;} 
 #main{min-height: 0px; padding: 20px 0px;}
 .wcontainer{width: 1200px; margin: 0 auto; min-width: 660px;}
 .wwrap{padding: 20px;}

@@ -28,7 +28,7 @@
 			<div class="setting-right">
 				<div class="setting-right-wrap wrap-boxes settings">
 					<div class="pwd-reset-wrap setting-resetpwd">
-						<form action="${pageContext.request.contextPath }/user/setresetpwd" method="post" id="resetpwdForm">
+						<form action="${pageContext.request.contextPath }/user/setresetpwd" autocomplete="off" method="post" id="resetpwdForm">
 							<c:if test="${success eq true }">
 								<p class="pwdMsg successMsg">${pwdMsg }</p>
 							</c:if>

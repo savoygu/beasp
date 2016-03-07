@@ -35,7 +35,9 @@
 							<p id="repwdError" class="tips errorClass"></p>
 						</div>
 						<input type="hidden" name="email" value="${email }">
-						<input type="hidden" name="fromurl" value="${fromurl }">
+						<c:if test="${!empty fromurl && fromurl ne '${fromurl}'}">
+							<input type="hidden" name="fromurl" value="${fromurl }">
+						</c:if>
 						<div>
 							<button id="forgot-submit" class="btn btn-red btn-block btn-red-reset link-btn" aria-role="button" type="submit">提交</button>
 						</div>

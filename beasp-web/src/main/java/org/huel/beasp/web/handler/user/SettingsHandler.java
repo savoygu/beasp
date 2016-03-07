@@ -69,7 +69,7 @@ public class SettingsHandler {
 	 */
 	@RequestMapping(value="/account/resetpasspage", method=RequestMethod.POST)
 	public String findPwd4(@RequestParam("email") String email, @RequestParam("newpwd") String newpwd,
-			@RequestParam("repwd") String repwd, @RequestParam("fromurl") String fromurl,
+			@RequestParam("repwd") String repwd, @RequestParam(value="fromurl", required=false) String fromurl,
 			Map<String, Object> map, HttpServletRequest request) {
 		if(email != null && !"".equals(email)) {
 			User user = userService.getByEmail(email);

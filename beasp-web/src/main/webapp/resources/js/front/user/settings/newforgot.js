@@ -28,7 +28,7 @@ $(document).ready(function() {
 	 * 切换验证码
 	 */
 	$("#imgVerifyCode").on("click", function() {
-		$(this).attr("src", "/beasp/VerifyCodeServlet.servlet?a="+new Date().getTime());
+		$(this).attr("src", "/VerifyCodeServlet.servlet?a="+new Date().getTime());
 	})
 	
 	$("#js-forgot-form").submit(function() {
@@ -66,7 +66,7 @@ function validateEmail()  {
 	 */
 	var bool = true;
 	$.ajax({
-		url:"/beasp/admin/user/ajaxValidateEmail",
+		url:"/admin/user/ajaxValidateEmail",
 		data:{"email":value, "time":new Date()},
 		type:"POST",
 		dataType: "json",
@@ -105,7 +105,7 @@ function validateVerifyCode() {
 	 * 3.是否正确
 	 */
 	$.ajax({
-		url:"/beasp/ajaxValidateVerifyCode",
+		url:"/ajaxValidateVerifyCode",
 		data:{verifyCode:value},
 		type:"POST",
 		dataType:"json",
@@ -148,5 +148,5 @@ function showError(ele) {
  * 换一张
  */
 function _hyz() {
-	$("#imgVerifyCode").attr("src", "/beasp/VerifyCodeServlet.servlet?a="+new Date().getTime());
+	$("#imgVerifyCode").attr("src", "/VerifyCodeServlet.servlet?a="+new Date().getTime());
 }

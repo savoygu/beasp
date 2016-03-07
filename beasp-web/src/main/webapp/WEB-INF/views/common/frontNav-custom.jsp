@@ -4,15 +4,18 @@
 <header class="nav-custom">
 	<div class="nav-waper">
 		<div class="nav-header">
-			<a class="nav-logo" href="<%=beaspPath%>">
-				<img height="100%" alt="书籍交换与分享平台" src="<%=imgPath%>/logo.png">
+			<a class="nav-logo" href="<%=beaspPath%>/">
+				<!-- logo -->
+				<%-- <img height="100%" alt="书籍交换与分享平台" src="<%=imgPath%>/logo.png"> --%>
+				<!-- 文字 -->
+				书籍交换与分享平台
 			</a>
 		</div>
 		<div class="nav-content">
 			<ul class="cf">
 				<li><a target="_self" href="<%=beaspPath%>/book/list/category/0"><i class="fa fa-stack-exchange"></i> 分享与交换</a></li>
-				<li><a target="_self" href="#"><i class="fa fa-hand-scissors-o"></i>
-						二手市场</a></li>
+				<!-- <li><a target="_self" href="#"><i class="fa fa-hand-scissors-o"></i>
+						二手市场</a></li> -->
 				<li><a rel="nofollow"
 					href="http://weibo.com/3195484694" target="_blank"><i
 						class="fa fa-weibo"></i> &nbsp;书籍交换与分享平台微博</a></li>
@@ -44,8 +47,8 @@
 									</c:if>
 									<span  class="name text-ellipsis">${user.userName}</span>
 									<p class="meta">
-										<a href="<%=beaspPath%>/space/experience">经验<b id="js-user-mp">3845</b></a>
-										<a href="<%=beaspPath%>/myclub/credit">积分<b id="js-user-mp">3845</b></a>
+										<a href="<%=beaspPath%>/space/experience">性别：<b id="js-user-mp">${user.gender.name }</b></a>
+										<a href="<%=beaspPath%>/myclub/credit">Phone：<b id="js-user-mp">${user.phone }</b></a>
 									</p>
 								</div>
 								<div class="card-links">
@@ -55,10 +58,15 @@
 								</div>
 								<div class="card-history">
 									<span class="history-item">
-										<span class="tit text-ellipsis">慕课网技术沙龙之前端专场</span>
-										<span class="media-name text-ellipsis">1-1 前端缓存那些事</span>
-										<i class="fa fa-clock-o"></i>
-										<a class="continue" href="#">继续</a>
+										<c:if test="${empty bu }">
+											去看看有什么好的书籍吧，<a class="continue" href="<%=beaspPath%>/book/list/category/0">出发</a>
+										</c:if>
+										<c:if test="${!empty bu }">
+											<span class="tit text-ellipsis">${bu.book.name }</span>
+											<span class="media-name text-ellipsis">${bu.book.author }</span>
+											<i class="fa fa-clock-o"></i>
+											<a class="continue" href="<%=beaspPath%>/book/view/${bu.book.id}">继续</a>
+										</c:if>
 									</span>
 								</div>
 								<div class="card-sets cf">
