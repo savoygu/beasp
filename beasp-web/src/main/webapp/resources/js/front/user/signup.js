@@ -110,7 +110,7 @@ function validateUserName() {
 	 */
 	var bool = true;
 	$.ajax({
-		url: "/beasp/admin/user/ajaxValidateUserName",
+		url: "/admin/user/ajaxValidateUserName",
 		data: {"userName":value, "time":new Date()},
 		type: "POST",
 		dataType: "json",
@@ -218,7 +218,7 @@ function validateEmail()  {
 	 */
 	var bool = true;
 	$.ajax({
-		url:"/beasp/admin/user/ajaxValidateEmail",
+		url:"/admin/user/ajaxValidateEmail",
 		data:{"email":value, "time":new Date()},
 		type:"POST",
 		dataType: "json",
@@ -257,7 +257,7 @@ function validatePhone() {
 	 */
 	var bool = true;
 	$.ajax({
-		url:"/beasp/admin/user/ajaxValidatePhone",
+		url:"/admin/user/ajaxValidatePhone",
 		data:{"phone":value, "time":new Date()},
 		type:"POST",
 		dataType:"json",

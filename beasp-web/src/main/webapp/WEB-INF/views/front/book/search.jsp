@@ -15,6 +15,7 @@
 <link href="<%=cssPath%>/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<%=cssPath%>/front/common.css">
 <link rel="stylesheet" href="<%=cssPath%>/front/book/search.css">
+<link rel="stylesheet" href="<%=cssPath%>/front/login-regist.css">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -94,5 +95,6 @@
 	<%-- <script src="<%=jsPath%>/bootstrap.min.js"></script> --%>
 	<script type="text/javascript" src="<%=jsPath%>/front/common.js"></script>
 	<script type="text/javascript" src="<%=jsPath%>/front/book/search.js"></script>
+	<script type="text/javascript" src="<%=jsPath%>/front/user/login-regist.js"></script>
 </body>
 </html>

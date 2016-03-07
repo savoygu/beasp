@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.codec.binary.Base64;
 import org.huel.beasp.entity.user.User;
+import org.huel.beasp.exception.BeaspException;
 import org.huel.beasp.service.user.UserService;
+import org.huel.beasp.web.handler.dto.AjaxOper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,6 +40,63 @@ public class LoginHandler {
 		return "redirect:/account/signin";
 	}
 	
+	/**
+	 * ajax注册
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/ajaxSignup", method=RequestMethod.POST)
+	public AjaxOper ajaxSignup(@RequestParam("email") String email,
+			@RequestParam("password") String password,@RequestParam("nickName") String nickName,
+			@RequestParam("verify") String verify,
+			 HttpServletRequest request) {
+		AjaxOper ajaxOper = new AjaxOper(0, "注册成功");
+		if(isNotEmpty(email) && isNotEmpty(password) &&
+				isNotEmpty(nickName) && isNotEmpty(verify)) {
+			User user = new User(password, nickName, email);
+			/**
+			 * 2. 保存用户
+			 */
+			try {
+				request.getSession().setAttribute("user", userService.save(user));
+			} catch (Exception e) {
+				throw new BeaspException();
+			}
+		} else {
+			ajaxOper = new AjaxOper(1, "注册失败");
+		}
+		return ajaxOper;
+	}
+	
+	private boolean isNotEmpty(String str) {
+		return (str!=null&&!"".equals(str))?true:false;
+	}
+	
+	/**
+	 * ajax登录
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value="/ajaxSignin", method=RequestMethod.POST)
+	public AjaxOper ajaxSignin(@RequestParam("email") String email,
+			@RequestParam("password") String password,
+			 HttpServletRequest request) {
+		AjaxOper ajaxOper = new AjaxOper(0, "电子邮箱地址和密码正确");
+		if(email!= null && !"".equals(email) && 
+				password!= null && !"".equals(password)) {
+			User user = userService.getByEmailAndPassword(email, password);
+			if(user != null) {
+				//保存用户到 session
+				request.getSession().setAttribute("user", user);
+			} else {
+				ajaxOper = new AjaxOper(1, "电子邮箱地址或密码错误");
+			}
+		} else {
+			ajaxOper = new AjaxOper(1, "电子邮箱地址或密码错误");
+		}
+		return ajaxOper;
+	}
+ 	
 	/**
 	 * 登录
 	 * @param userName

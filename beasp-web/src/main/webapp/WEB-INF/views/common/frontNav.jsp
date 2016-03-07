@@ -29,8 +29,10 @@
 					href="http://weibo.com/3195484694" target="_blank"><i
 						class="fa fa-weibo"></i> &nbsp;书籍交换与分享平台微博</a></li>
 				<c:if test="${empty sessionScope.user }">
-					<li class="header-signin"><a id="js-signin-btn" href="<%=beaspPath%>/account/signin">登录</a></li>
-					<li class="header-singup"><a id="js-signup-btn" href="<%=beaspPath%>/account/signup">注册</a></li>
+					<%-- <li class="header-signin"><a id="js-signin-btn" href="<%=beaspPath%>/account/signin">登录</a></li>
+					<li class="header-singup"><a id="js-signup-btn" href="<%=beaspPath%>/account/signup">注册</a></li> --%>
+					<li class="header-signin"><a id="js-signin-btn" href="#">登录</a></li>
+					<li class="header-singup"><a id="js-signup-btn" href="#">注册</a></li>
 				</c:if>
 				<c:if test="${!empty sessionScope.user }">
 					<li class="user-card-box set_btn">

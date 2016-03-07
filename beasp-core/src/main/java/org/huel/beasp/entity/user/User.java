@@ -74,7 +74,18 @@ public class User implements Serializable{
 	
 	/**邮箱验证,0,1分别代表，为验证，已验证**/
 	private int verifyEmail = 0;
-	
+
+	public User() {
+		super();
+	}
+
+	public User(String password, String nickName, String email) {
+		super();
+		this.password = password;
+		this.nickName = nickName;
+		this.email = email;
+	}
+
 	public int getVerifyEmail() {
 		return verifyEmail;
 	}

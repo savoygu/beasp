@@ -11,10 +11,10 @@
 <title>书籍交换与分享平台-单品页</title>
 
 <!-- Bootstrap -->
-<link href="<%=cssPath%>/bootstrap.min.css" rel="stylesheet">
 <link href="<%=cssPath%>/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<%=cssPath%>/front/common.css">
 <link rel="stylesheet" href="<%=cssPath%>/front/book/view.css">
+<link rel="stylesheet" href="<%=cssPath%>/front/login-regist.css">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -23,7 +23,7 @@
     <![endif]-->
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/common/frontNav.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/common/frontNav-custom.jsp"></jsp:include>
 	
 	<!-- 导航菜单 -->
 	<c:set var="menuout" value=""/>
@@ -259,15 +259,97 @@
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="<%=jsPath%>/jquery-2.1.4.min.js"></script>
+	<c:if test="${empty user or empty user.userName }">
+		<script type="text/javascript">
+			var OP_CONFIG={"module":"index", "page":"index"};
+			var isLogin = 0; var ownName="${user.email}";
+		</script>
+	</c:if>
+	<c:if test="${!empty user and !empty user.userName }">
+		<script type="text/javascript">
+			var OP_CONFIG={"module":"book", "page":"view", "userInfo":{"uid":"${user.id}", "nickName":"${user.nickName}",
+				"photoName": "http://localhost/"+"${user.photoName}!=null?${user.image40FullPath}:${user.defaultImage40Path}"}};
+			var isLogin = 1; var ownName="${user.email}";
+		</script>
+	</c:if>
 	<script type="text/javascript" src="<%=layerPath%>/layer.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<%-- <script src="<%=jsPath%>/bootstrap.min.js"></script> --%>
 	<script type="text/javascript" src="<%=jsPath%>/front/common.js"></script>
+	<script type="text/javascript" src="<%=jsPath%>/front/user/login-regist.js"></script>
 	<script type="text/javascript" src="<%=jsPath%>/front/book/view.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			
-		})	
-	</script>
+	<!-- <div id="mask"></div> -->
+	<!-- <div id="signup" class="rl-modal in" aria-hidden="false">
+		<div class="rl-modal-header">
+			<h1>
+				<span data-fromto="signup:signin">登录</span>
+				<span class="active-title">注册</span>
+			</h1>
+			<button class="rl-close" aria-hidden="true" hidefocus="true" data-dismiss="modal" type="button"></button>
+		</div>
+		<div class="rl-modal-body">
+			<div class="cf">
+				<div class="l-left-warp l">
+					<form action="" id="signup-form" autocomplete="off">
+						<p class="rlf-tip-globle" id="signin-globle-error"></p>
+						<div class="rlf-group">
+							<input class="ipt ipt-email"  id='email' type="email" name="email" placeholder="请输入电子邮箱地址" autocomplete="off" required="required"/>
+							<p class="rlf-tip-wrap emailError"></p>
+						</div>
+						<div class="rlf-group">
+							<input class="ipt ipt-email" id='password' type="text" name="password" placeholder="6-16位密码，区分大小写，不能用空格" autocomplete="off" required="required"/>
+							<p class="rlf-tip-wrap passwordError"></p>
+						</div>
+						<div class="rlf-group">
+							<input class="ipt ipt-email" id='nickName' type="text" name="nickName" placeholder="昵称为3-18位，中英文、数字及下划线" autocomplete="off" required="required"/>
+							<p class="rlf-tip-wrap"></p>
+						</div>
+						<div class="rlf-group cf">
+						    <input id='verify' name="verify" class="ipt ipt-verify l" placeholder="请输入验证码" type="text">
+						    <a href="javascript:void(0)" hidefocus="true" class="verify-img-wrap js-verify-refresh"><img src="/VerifyCodeServlet.servlet" id="imgVerifyCode" class="verify-img"></a>
+						    <a href="javascript:_hyz()" hidefocus="true" class="icon-refresh js-verify-refresh">换一张</a>
+							<p class="rlf-tip-wrap"></p>
+						</div>
+						<div class="rlf-group cf">
+							<input id="signin-btn" value="注册" hidefocus="true" class="btn-red btn-full" type="submit">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div> -->
+	<!-- <div id="signin" class="rl-modal in" aria-hidden="false">
+		<div class="rl-modal-header">
+			<h1>
+				<span class="active-title">登录</span>
+				<span data-fromto="signin:signup">注册</span>
+			</h1>
+			<button class="rl-close" aria-hidden="true" hidefocus="true" data-dismiss="modal" type="button"></button>
+		</div>
+		<div class="rl-modal-body">
+			<div class="cf">
+				<div class="l-left-warp l">
+					<form action="" id="signup-form" autocomplete="off">
+						<p class="rlf-tip-globle" id="signin-globle-error"></p>
+						<div class="rlf-group">
+							<input class="ipt ipt-email" type="text" name="userName" placeholder="请输入用户名" autocomplete="off" required="required"/>
+							<p class="rlf-tip-wrap"></p>
+						</div>
+						<div class="rlf-group">
+							<input class="ipt ipt-email" type="text" name="password" placeholder="请输入密码" autocomplete="off" required="required"/>
+							<p class="rlf-tip-wrap"></p>
+						</div>
+						<div class="rlf-group rlf-appendix cf">
+							<label for="auto-signin" class="rlf-autoin l" hidefocus="true"><input checked="checked" class="auto-cbx" id="auto-signin" type="checkbox">下次自动登录</label>
+							<a href="/user/newforgot" class="rlf-forget r" target="_blank" hidefocus="true">忘记密码 </a>
+						</div>
+						<div class="rlf-group cf">
+							<input id="signin-btn" value="登录" hidefocus="true" class="btn-red btn-full" type="submit">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div> -->
 </body>
 </html>

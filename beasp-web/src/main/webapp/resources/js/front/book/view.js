@@ -1,7 +1,11 @@
 $(document).ready(function() {
+		
 		/**评论框**/
 		$("#js-pl-input-fake").on({
 			focusin : function() {
+				if(!OP_CONFIG.userInfo) {
+					signin();
+				}
 				$(this).addClass("ipt-fake-focus");
 				$(".pub-editor-wrap").next(".errortip").hide();
 			},
@@ -20,6 +24,9 @@ $(document).ready(function() {
 		})
 		/**发布评论**/
 		function ajaxComment(obj) {
+			if(!OP_CONFIG.userInfo) {
+				signin();
+			}
 			$.ajax({
 				url:"/book/comment",
 				type:"POST",
@@ -136,6 +143,10 @@ $(document).ready(function() {
 		/**点赞**/
 		$(".js-praise-action").on({
 			click : function() {
+				if(!OP_CONFIG.userInfo) {
+					signin(); 
+					return;
+				}
 				if(isAjax) return;
 				isAjax = 1;
 				var obj = $(this),
@@ -176,10 +187,13 @@ $(document).ready(function() {
 			} 
 		})
 		
-		
 		/**收藏**/
 		var isAjax = 0;
 		$(".js-follow-action").on("click", function() {
+			if(!OP_CONFIG.userInfo) {
+				signin();
+				return;
+			}
 			if(isAjax) return;
 			isAjax = 1;
 			var obj = $(this),

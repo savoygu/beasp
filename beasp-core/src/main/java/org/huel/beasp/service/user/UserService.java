@@ -221,7 +221,7 @@ public class UserService {
 	 * @param user
 	 */
 	@Transactional
-	public void save(User user) {
+	public User save(User user) {
 		if(user.getId() == null) {
 			user.setPassword(MD5.MD5Encode(user.getPassword()));;//MD5加密
 		}
@@ -241,7 +241,7 @@ public class UserService {
 		} else 
 			throw new BeaspException();
 		
-		userRespository.saveAndFlush(user);
+		return userRespository.saveAndFlush(user);
 	}
 
 }

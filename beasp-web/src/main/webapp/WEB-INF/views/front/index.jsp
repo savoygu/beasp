@@ -11,10 +11,11 @@
 <title>书籍交换与分享平台</title>
 
 <!-- Bootstrap -->
-<link href="<%=cssPath%>/bootstrap.min.css" rel="stylesheet">
+<%-- <link href="<%=cssPath%>/bootstrap.min.css" rel="stylesheet"> --%>
 <link href="<%=cssPath%>/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<%=cssPath%>/front/common.css">
 <link rel="stylesheet" href="<%=cssPath%>/front/index.css">
+<link rel="stylesheet" href="<%=cssPath%>/front/login-regist.css">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -23,7 +24,7 @@
     <![endif]-->
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/common/frontNav.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/common/frontNav-custom.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/frontBanner.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/common/frontMenu.jsp"></jsp:include>
 	<div class="container-fluid m" id="zt">
@@ -210,6 +211,6 @@
 	<script type="text/javascript">var n=0;</script>
 	<script type="text/javascript" src="<%=jsPath%>/m.js"></script>
 	<script type="text/javascript" src="<%=jsPath%>/front/common.js"></script>
-	
+	<script type="text/javascript" src="<%=jsPath%>/front/user/login-regist.js"></script>
 </body>
 </html>

@@ -11,10 +11,11 @@
 <title>书籍交换与分享平台-列表页</title>
 
 <!-- Bootstrap -->
-<link href="<%=cssPath%>/bootstrap.min.css" rel="stylesheet">
+<%-- <link href="<%=cssPath%>/bootstrap.min.css" rel="stylesheet"> --%>
 <link href="<%=cssPath%>/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<%=cssPath%>/front/common.css">
 <link rel="stylesheet" href="<%=cssPath%>/front/book/list.css">
+<link rel="stylesheet" href="<%=cssPath%>/front/login-regist.css">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -23,7 +24,7 @@
     <![endif]-->
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/common/frontNav.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/common/frontNav-custom.jsp"></jsp:include>
 
 	<div id="menu_wrap"
 		class="yn jz container-fluid nav-bgn m0 visible-lg visible-md visible-sm">
@@ -95,7 +96,7 @@
 							class="fa fa-rocket ls"></i> 历史</a></li>
 					<li><a href="<%=beaspPath%>/book/list/category/17"><i
 							class="fa fa-expand ls"></i> 文化</a></li>
-					<li><a href="<%=beaspPath%>/book/list/category/"><i
+					<li><a href="<%=beaspPath%>/book/list/category/18"><i
 							class="fa fa-arrows-v ls"></i> 古籍</a></li>
 					<li><a href="<%=beaspPath%>/book/list/category/19"><i
 							class="fa fa-cogs ls"></i> 心理学</a></li>
@@ -141,7 +142,17 @@
 	<div class="container m0 bod mar-t70 w-1200 mar-b50" id="zt">
 		<!-- 导航菜单 -->
 		<c:set var="menuout" value="" />
-		<c:forEach items="${menucates }" var="cate">
+		<c:forEach items="${menucates }" var="cate" varStatus="status">
+				<c:choose>
+					<c:when test="${empty menuout }">
+						<c:set var="menuout" value="<a href='/book/list/category/${cate.id }'>${cate.name }</a>${menuout }" />
+					</c:when>					
+					<c:otherwise>
+						<c:set var="menuout" value="<a href='/book/list/category/${cate.id }'>${cate.name }</a><i class='path-split'>&#92;</i>${menuout }" />
+					</c:otherwise>
+				</c:choose>
+		</c:forEach>
+		<%-- <c:forEach items="${menucates }" var="cate">
 			<c:if test='${cateid!=cate.id }'>
 				<c:if test="${fn:length(menucates) <= 3}">
 					<c:set var="menuout"
@@ -162,14 +173,14 @@
 						value="<font color='#FF318C'>${cate.name }${menuout }</font>" />
 				</c:if>
 			</c:if>
-		</c:forEach>
+		</c:forEach> --%>
 
 
 		<div class="container m0 bod w-1200">
 			<div class="w-1200">
 				<div class="book-nav-box">
-					<div class="book-nav-hd">
-						<ol class="breadcrumb jjk20">
+					<div class="book-nav-hd book-infos">
+						<%-- <ol class="breadcrumb jjk20">
 							<li><a href="<%=beaspPath%>/">首页</a></li>
 							<c:if test="${booklist eq true }">
 								<li><font color='#FF318C'>交换与分享</font></li>
@@ -178,7 +189,13 @@
 								<li><a href="<%=beaspPath%>/book/list/category/0">交换与分享</a></li>
 								<li><c:out value="${menuout }" escapeXml="false"></c:out></li>
 							</c:if>
-						</ol>
+						</ol> --%>
+						<div class="path">
+							<a href="<%=beaspPath%>/">首页</a> <i class='path-split'>&#92;</i> <a
+								href="<%=beaspPath%>/book/list/category/0">交换与分享</a> <i
+								class='path-split'>&#92;</i>
+							<c:out value="${menuout }" escapeXml="false"></c:out>
+						</div>
 					</div>
 					<div class="book-nav-row cf">
 						<span class="hd l">方向：</span>
@@ -323,5 +340,6 @@
 	</script>
 	<script type="text/javascript" src="<%=jsPath%>/m.js"></script>
 	<script type="text/javascript" src="<%=jsPath%>/front/common.js"></script>
+	<script type="text/javascript" src="<%=jsPath%>/front/user/login-regist.js"></script>
 </body>
 </html>

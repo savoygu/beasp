@@ -4,6 +4,7 @@ body { background-color: #FFF; font-family: "微软雅黑"; font-size: 12px;}
 .w-1000{width: 1000px; margin: 0 auto;}
 .w-1170{width: 1170px; margin: 0 auto;}
 .w-1200{width: 1200px; margin: 0 auto;}
+
 /*外边距*/
 .mar-t20{margin-top: 20px;}
 .mar-t10{margin-top: 10px;}
@@ -24,6 +25,8 @@ fieldset img{border: 0px none;}
 ol,ul{list-style: outside none none;}
 blockquote, body, button, dd, dl, dt, fieldset, figure, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, pre, select, td, textarea, th, ul{margin: 0px;padding: 0px;}
 address, caption, cite, code, dfn, em, strong, th, var, optgroup {font-style: normal; font-weight: normal;}
+input, button, textarea, select{border: medium none;}
+input, textarea{outline: medium none;}
 a, a:hover{text-decoration: none; transition: color .2s;}
 a:link, a:visited{ color: #14191E;}
 a:hover { color:#FF318C;}
@@ -98,11 +101,11 @@ h1, h2, h3, h4, h5, h6 { font-size: 100%;font-weight: normal;font-family: "Micro
 /* 平台banner */
 .banner{background-image: url("/resources/images/home-bg.png"); height: 204px; background-position: center 0%; background-repeat: no-repeat; background-color: #17181c; position:fixed; width: 100%; z-index: 1; top: 50px;}
 /* 平台搜索 */
-.banseo{width: 506px; height: 34px; left: 0; right: 0; margin:auto; position: absolute; top: 116px;}
+.banseo{width: 546px; height: 34px; left: 0; right: 0; margin:auto; position: absolute; top: 116px;}
 /* 平台搜索框  */
 .bantxt{width: 504px; height: 34px; border: 1px solid #2c2c2c; background-color: #131418; padding-left: 20px; padding-right: 20px; outline: none; color: #B7B7B7; border-radius: 34px;}
 /* 平台 banner 搜索按钮 */
-.banbutt{position: absolute; right: 0px; top:0px; background-color: transparent; border-width: 0px; outline: none;}
+.banbutt{position: absolute; right: 9px; top:7px; background-color: transparent; border-width: 0px; outline: none;}
 .banbutt:hover{ color:#fff}
 /* 修改默认 placeholder 属性 */
 ::-webkit-input-placeholder { /* WebKit browsers */
@@ -121,17 +124,17 @@ h1, h2, h3, h4, h5, h6 { font-size: 100%;font-weight: normal;font-family: "Micro
 .jz{text-align: center; line-height: 50px; font-size: 15px; color: #C8C8C8; position: relative;}
 .jz a { color: #69696d; }
 .jz a:hover { color: #1769ff; text-decoration: none; }
-.nav-bg,.nav-bgn{height: 50px; background-color: #FFF;margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.07); z-index: 5;position: relative; top: 255px;}
+.nav-bg,.nav-bgn{height: 50px; background-color: #FFF;margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.07); z-index: 4;position: relative; top: 255px;}
 .nav-bgn{top:50px;}
-.menuFixed { position: fixed; left: 0; z-index: 10; width: 100%; }
+.menuFixed { position: fixed; left: 0; z-index: 4; width: 100%; }
 .sort{cursor: pointer; display: inline-block; padding-right: 25px;max-width: 33%;position:relative;text-align: left;padding-left: 25px;padding-bottom:20px;}
 .sort:hover{color: #FF318C;}
 .mh { -webkit-backface-visibility: hidden; -webkit-filter: blur(5px); filter: blur(5px);opacity: 0.9;-webkit-animation: nvfadeInDown 1s .1s ease both;
     -moz-animation: nvfadeInDown .3s .1s ease both;}
 .ty { box-shadow: 0 1px 3px rgba(0,0,0,0.07); }
 .nav-zi{position: absolute; top: 50px;left: 0px; background-color: #FFF; height: auto; width: 100%; text-align: left; border-top: 1px solid #E8E8E8;}
-.nav-zi ul{padding-top: 20px; padding-bottom: 10px;}
-.nav-zi li {  width: 280px; }
+.nav-zi ul{padding-top: 20px; padding-bottom: 10px; margin-left: 120px;}
+.nav-zi li {width: 280px; float:left; margin-bottom: 20px;}
 .nav-zi a{border: 1px solid #EDEDED;padding-left: 40px; margin-left: 10px; padding-right: 20px; margin-right: 10px;display: block;line-height: 40px; -webkit-transition: all 0.2s ease-in; -moz-transition: all 0.2s ease-in; -ms-transition: all 0.2s ease-in; -o-transition: all 0.3s ease-in; transition: all 0.4s ease-in;}
 .nav-zi a:hover{ background-color: #FF318C;border: 1px solid #FF318C; color: #FFF;}
 .nav-zi i { padding-right: 10px; font-size: 18px;  }
@@ -177,7 +180,7 @@ h1, h2, h3, h4, h5, h6 { font-size: 100%;font-weight: normal;font-family: "Micro
 .footer-ss { border-right: 1px solid #000; box-shadow: 1px 0 0 #303030; padding-right: 12px; }
  */
 /*foot-imooc*/
-#footer{position:relative; background: #000 none repeat scroll 0% 0%; border-top: 1px solid #E2E4E6; font-size: 12px; color: #787D82; padding: 27px 0px; min-width: 620px; z-index: 5;}
+#footer{position:relative; background: #000 none repeat scroll 0% 0%; border-top: 1px solid #E2E4E6; font-size: 12px; color: #787D82; padding: 27px 0px; min-width: 620px; z-index: 4;}
 #footer .waper{width: auto; max-width: 1200px; margin: 0px auto;}
 #footer .footer-intro{padding-left: 40px;}
 #footer .footer-link{margin-bottom: 4px; line-height: 1.8;}
