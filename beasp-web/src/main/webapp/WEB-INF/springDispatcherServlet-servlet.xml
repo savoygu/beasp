@@ -58,4 +58,13 @@
         <property name="maxUploadSize" value="10485760000"></property>
         <property name="maxInMemorySize" value="40960"></property>
     </bean>
+    
+    <!-- 配置自动登录拦截器 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/*"></mvc:mapping>
+    		<mvc:exclude-mapping path="/account/*"/>
+    		<bean class="org.huel.beasp.web.interceptor.AutoLoginInterceptor"></bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
 </beans>

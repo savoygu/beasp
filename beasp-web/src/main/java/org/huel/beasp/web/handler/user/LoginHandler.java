@@ -17,6 +17,7 @@ import org.huel.beasp.entity.user.User;
 import org.huel.beasp.exception.BeaspException;
 import org.huel.beasp.service.book.BookUserService;
 import org.huel.beasp.service.user.UserService;
+import org.huel.beasp.utils.WebUtils;
 import org.huel.beasp.web.handler.dto.AjaxOper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,8 +40,21 @@ public class LoginHandler {
 	 * @return
 	 */
 	@RequestMapping("/account/logout")
-	public String logout(HttpServletRequest request) {
+	public String logout(HttpServletRequest request,
+			HttpServletResponse response) {
 		request.getSession().removeAttribute("user");
+		Cookie[] cookies = request.getCookies();
+		if(cookies != null && cookies.length > 0) {//清空cookie
+			for(Cookie cookie : cookies) {
+				if("beaspName".equals(cookie.getName())) {
+					Cookie cookie2 = new Cookie("beaspName", null);
+					cookie2.setMaxAge(0);
+					cookie2.setPath("/");
+					response.addCookie(cookie2);
+					break;
+				}
+			}
+		}
 		return "redirect:/account/signin";
 	}
 	
@@ -169,9 +183,12 @@ public class LoginHandler {
 			/**
 			 * 	非加密
 			 */
-			Cookie cookie = new Cookie("cookieDominName", userName+":"+password);
+			Cookie cookie = new Cookie("beaspName", userName+":"+password);
 			cookie.setMaxAge(60 * 60 * 24 * 10);
+			cookie.setPath("/");
 			response.addCookie(cookie);
+//			WebUtils.addCookie(response, "beaspName", userName+":"+password, 60 * 60 * 24 * 10);
+			
 			/**
 			 * 加密
 			 */
@@ -262,17 +279,25 @@ public class LoginHandler {
 		/**
 		 * 1.读取Cookie 值
 		 */
-		Cookie[] cookies = request.getCookies();
+//		Cookie[] cookies = request.getCookies();
 		/**
 		 * 非加密
 		 */
-		String cookieValue = null;
+		/*String cookieValue = null;
 		for(int i=0; i<cookies.length; i++) {
-			if(cookies[i].getName().equals("cookieDominName")) {
+			if(cookies[i].getName().equals("beaspName")) {
 				cookieValue = cookies[i].getValue();
 				break;
 			}
-		}
+		}*/
+		String cookieValue = WebUtils.getCookieByName(request, "beaspName");
+		getSplitCookieValue(request, cookieValue);
+		request.setAttribute("fromurl", fromurl);//带到登录界面
+		return "front/user/signin";
+	}
+
+	private void getSplitCookieValue(HttpServletRequest request,
+			String cookieValue) {
 		if(cookieValue != null) {
 			String[] cookieValues = cookieValue.split(":");
 			if(cookieValues.length == 2) {
@@ -283,8 +308,6 @@ public class LoginHandler {
 				}
 			}
 		}
-		request.setAttribute("fromurl", fromurl);//带到登录界面
-		return "front/user/signin";
 	}
 	
 	/**
@@ -293,30 +316,9 @@ public class LoginHandler {
 	 */
 	@RequestMapping(value="/account/signin", method=RequestMethod.GET)
 	public String signIn(HttpServletRequest request, HttpServletResponse response) {
-		/**
-		 * 1.读取Cookie 值
-		 */
-		Cookie[] cookies = request.getCookies();
-		/**
-		 * 非加密
-		 */
-		String cookieValue = null;
-		for(int i=0; i<cookies.length; i++) {
-			if(cookies[i].getName().equals("cookieDominName")) {
-				cookieValue = cookies[i].getValue();
-				break;
-			}
-		}
-		if(cookieValue != null) {
-			String[] cookieValues = cookieValue.split(":");
-			if(cookieValues.length == 2) {
-				try {
-					request.setAttribute("beaspUserName", URLDecoder.decode(cookieValues[0], "UTF-8"));
-					request.setAttribute("beaspPassword", URLDecoder.decode(cookieValues[1], "UTF-8"));
-				} catch (UnsupportedEncodingException e) {
-				}
-			}
-		}
+		
+		String cookieValue = WebUtils.getCookieByName(request, "beaspName");
+		getSplitCookieValue(request, cookieValue);
 		/**
 		 * 加密
 		 */

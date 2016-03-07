@@ -27,7 +27,7 @@
 	<jsp:include page="/WEB-INF/views/common/frontNav-custom.jsp"></jsp:include>
 	
 	<section id="mainBg" class="main" style="background-color: rgb(47, 48, 52);">
-		<div id="mainCnt" class="main-inner" style="background-image: url('/resources/images/user/140919_mailapp_cnt.jpg');">
+		<div id="mainCnt" class="main-inner" style="/* background-image: url('/resources/images/user/140919_mailapp_cnt.jpg'); */">
 			
 			<div id="loginBlock" class="login tab-2">
 				<div class="loginFunc">
