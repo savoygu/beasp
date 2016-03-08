@@ -11,6 +11,7 @@ import org.huel.beasp.entity.user.User;
 import org.huel.beasp.exception.BeaspException;
 import org.huel.beasp.service.common.ProvinceService;
 import org.huel.beasp.service.user.UserService;
+import org.huel.beasp.utils.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -155,7 +156,10 @@ public class RegisterHandler {
 	 * @return
 	 */
 	@RequestMapping(value="/account/signup", method=RequestMethod.GET)
-	public String signUp(Map<String, Object> map) {
+	public String signUp(Map<String, Object> map, HttpServletRequest request) {
+		if(WebUtils.getUser(request) != null) {//是否存在用户
+			return "redirect:/";
+		}
 		map.put("provinces", provinceService.getAll());
 		return "front/user/signup";
 	}

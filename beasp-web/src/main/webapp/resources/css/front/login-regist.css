@@ -35,3 +35,19 @@
 .rl-modal .icon-refresh{color: #b5b9bc; font-size: 12px;display: inline-block;margin: 14px 0 0 10px;-webkit-transition: 0.4s linear;transition: 0.4s ease-in;}
 .rl-modal .icon-refresh:hover{color: #cc0000;}
 .rlf-tip-wrap {clear: both;}
+.ipt:-moz-placeholder {
+  color: #c8cdd2;
+}
+.ipt::-moz-placeholder {
+  color: #c8cdd2;
+  opacity: 1;
+}
+.ipt:-ms-input-placeholder {
+  color: #c8cdd2;
+}
+.ipt::-webkit-input-placeholder {
+  color: #c8cdd2;
+}
+.ipt.placeholder {
+  color: #c8cdd2;
+}

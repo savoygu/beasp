@@ -12,6 +12,7 @@ import org.huel.beasp.utils.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 /**
  * 自动登录拦截器
  * @author 001
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class AutoLoginInterceptor implements HandlerInterceptor {
 
 	@Autowired private UserService userService;
+	@Autowired private RequestMappingHandlerMapping handlerMapping;
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request,
@@ -52,7 +54,6 @@ public class AutoLoginInterceptor implements HandlerInterceptor {
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -60,7 +61,6 @@ public class AutoLoginInterceptor implements HandlerInterceptor {
 			HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
 		// TODO Auto-generated method stub
-
 	}
 
 }

@@ -69,7 +69,7 @@
 						<span class="tool-item total-num">
 							共<b>${browseCount }</b>个书籍
 						</span>
-						<c:if test="${browseCount gt 0 }">
+						<c:if test="${browseCount gt 0}">
 							<span class="tool-item tool-pager">
 								<span class="pager-num">
 									<b class="pager-cur">${page.number+1 }</b>/<em class="pager-total">${page.totalPages }</em>

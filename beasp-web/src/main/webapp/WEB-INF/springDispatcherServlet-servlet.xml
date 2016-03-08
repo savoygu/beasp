@@ -48,6 +48,7 @@
 		<property name="exceptionMappings">
 			<props>
 				<prop key="org.huel.beasp.exception.BeaspException">common/error</prop>
+				<prop key="java.lang.Exception">common/error</prop>
 			</props>
 		</property>
 	</bean>
@@ -61,10 +62,12 @@
     
     <!-- 配置自动登录拦截器 -->
     <mvc:interceptors>
-    	<mvc:interceptor>
-    		<mvc:mapping path="/*"></mvc:mapping>
-    		<mvc:exclude-mapping path="/account/*"/>
-    		<bean class="org.huel.beasp.web.interceptor.AutoLoginInterceptor"></bean>
-    	</mvc:interceptor>
+    	<bean class="org.huel.beasp.web.interceptor.AutoLoginInterceptor"></bean>
+    	<!-- <mvc:interceptor>
+    		<mvc:mapping path="/*"/>
+    		<mvc:exclude-mapping path="/resources/*"/>
+    		<bean class="org.huel.beasp.web.interceptor.UrlFilterInterceptor"></bean>
+    	</mvc:interceptor> -->
     </mvc:interceptors>
+    
 </beans>

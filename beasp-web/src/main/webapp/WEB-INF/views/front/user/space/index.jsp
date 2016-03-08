@@ -74,7 +74,7 @@
 						<span class="tool-item total-num">
 							共<b>${count }</b>个书籍
 						</span>
-						<c:if test="${count gt 0 }">
+						<c:if test="${count gt 0 && !empty page && page.numberOfElements gt 0}">
 							<span class="tool-item tool-pager">
 								<span class="pager-num">
 									<b class="pager-cur">${page.number+1 }</b>/<em class="pager-total">${page.totalPages }</em>

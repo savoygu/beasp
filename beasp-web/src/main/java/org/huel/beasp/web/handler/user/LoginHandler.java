@@ -79,6 +79,7 @@ public class LoginHandler {
 				user = userService.save(user);
 				request.getSession().setAttribute("user", user);
 				getLastestBrowse(request, user);
+				
 			} catch (Exception e) {
 				throw new BeaspException();
 			}
@@ -99,8 +100,8 @@ public class LoginHandler {
 	@ResponseBody
 	@RequestMapping(value="/ajaxSignin", method=RequestMethod.POST)
 	public AjaxOper ajaxSignin(@RequestParam("email") String email,
-			@RequestParam("password") String password,
-			 HttpServletRequest request) {
+			@RequestParam("password") String password, @RequestParam("autoLogin") Boolean autoLogin,
+			 HttpServletRequest request, HttpServletResponse response) {
 		AjaxOper ajaxOper = new AjaxOper(0, "电子邮箱地址和密码正确");
 		if(email!= null && !"".equals(email) && 
 				password!= null && !"".equals(password)) {
@@ -109,6 +110,10 @@ public class LoginHandler {
 				//保存用户到 session
 				request.getSession().setAttribute("user", user);
 				getLastestBrowse(request, user);
+				
+				//保存10天cookie
+				saveCookieInTen(email, password, autoLogin, response);
+				
 			} else {
 				ajaxOper = new AjaxOper(1, "电子邮箱地址或密码错误");
 			}
@@ -136,8 +141,11 @@ public class LoginHandler {
 	@RequestMapping(value="/account/signin", method=RequestMethod.POST)
 	public String login(@RequestParam("userName") String userName,
 			@RequestParam("password") String password, @RequestParam("verifyCode") String verifyCode,
-			@RequestParam("fromurl") String fromurl,
+			@RequestParam("fromurl") String fromurl, @RequestParam("autoLogin") boolean autoLogin,
 			HttpServletRequest request, HttpServletResponse response) {
+		if(WebUtils.getUser(request) != null) {//是否存在用户
+			return "redirect:/book/list";
+		}
 		/**
 		 * 1. 校验
 		 */
@@ -170,24 +178,12 @@ public class LoginHandler {
 			}
 			return "front/user/signin"; 
 		} else {
-			getLastestBrowse(request, user);
 			
 			//保存用户到 session
 			request.getSession().setAttribute("user", user);
-			//获取用户名保存到cookie 中
-			try {
-				userName = URLEncoder.encode(userName,"UTF-8");
-				password = URLEncoder.encode(password, "UTF-8");
-			} catch (UnsupportedEncodingException e) {
-			}
-			/**
-			 * 	非加密
-			 */
-			Cookie cookie = new Cookie("beaspName", userName+":"+password);
-			cookie.setMaxAge(60 * 60 * 24 * 10);
-			cookie.setPath("/");
-			response.addCookie(cookie);
-//			WebUtils.addCookie(response, "beaspName", userName+":"+password, 60 * 60 * 24 * 10);
+			getLastestBrowse(request, user);
+			
+			saveCookieInTen(userName, password, autoLogin, response);
 			
 			/**
 			 * 加密
@@ -210,6 +206,26 @@ public class LoginHandler {
 			return "redirect:"+fromurl;
 		}
 		return "redirect:/";
+	}
+
+	private void saveCookieInTen(String userName, String password,
+			boolean autoLogin, HttpServletResponse response) {
+		if(autoLogin) {//如果勾选就保存10天的cookie
+			//获取用户名保存到cookie 中
+			try {
+				userName = URLEncoder.encode(userName,"UTF-8");
+				password = URLEncoder.encode(password, "UTF-8");
+			} catch (UnsupportedEncodingException e) {
+			}
+			/**
+			 * 	非加密
+			 */
+			Cookie cookie = new Cookie("beaspName", userName+":"+password);
+			cookie.setMaxAge(60 * 60 * 24 * 10);
+			cookie.setPath("/");
+			response.addCookie(cookie);
+//				WebUtils.addCookie(response, "beaspName", userName+":"+password, 60 * 60 * 24 * 10);
+		}
 	}
 	/**
 	 * 获取 User 的方式
@@ -316,7 +332,9 @@ public class LoginHandler {
 	 */
 	@RequestMapping(value="/account/signin", method=RequestMethod.GET)
 	public String signIn(HttpServletRequest request, HttpServletResponse response) {
-		
+		if(WebUtils.getUser(request) != null) {//是否存在用户
+			return "redirect:/";
+		}
 		String cookieValue = WebUtils.getCookieByName(request, "beaspName");
 		getSplitCookieValue(request, cookieValue);
 		/**

@@ -297,7 +297,7 @@ public class FrontBookHandler {
 	 * @param isExchange
 	 * @return
 	 */
-	@RequestMapping("/book/list/category/{id}")
+	@RequestMapping(value="/book/list/category/{id}")
 	public String searchBookList(Map<String, Object> map, 
 			@RequestParam(value="pageNo", required=true, defaultValue="1") String pageNoStr,
 			@RequestParam(value="sort", required=false, defaultValue="last") String sort,

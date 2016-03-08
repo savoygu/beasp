@@ -91,7 +91,12 @@ $(function() {
 		if(bool == true) {
 			$.ajax({
 				url:"/ajaxSignin",
-				data:{"email":$("input[name='email']").val(), "password":$("input[name='password']").val(), "time":new Date()},
+				data:{
+						"email":$("input[name='email']").val(), 
+						"password":$("input[name='password']").val(), 
+						"autoLogin":$("input[name='autoLogin']").val(), 
+						"time":new Date()
+					},
 				type:"POST",
 				dataType: "json",
 				async: false,
@@ -371,7 +376,7 @@ function signin() {
 												"<p id='passwordError' class='rlf-tip-wrap'></p>"+
 											"</div>"+
 											"<div class='rlf-group rlf-appendix cf'>"+
-												"<label for='auto-signin' class='rlf-autoin l' hidefocus='true'><input checked='checked' class='auto-cbx' id='auto-signin' type='checkbox'>下次自动登录</label>"+
+												"<label for='auto-signin' class='rlf-autoin l' hidefocus='true'><input checked='checked' class='auto-cbx' name='autoLogin' id='auto-signin' type='checkbox'>下次自动登录</label>"+
 												"<a href='/user/newforgot' class='rlf-forget r' target='_blank' hidefocus='true'>忘记密码 </a>"+
 											"</div>"+
 											"<div class='rlf-group cf'>"+

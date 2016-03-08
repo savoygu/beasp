@@ -82,7 +82,7 @@
 						<div class="loginFormCheck">
 							<div id="lfAutoLogin" class="loginFormCheckInner">
 								<label id="remAutoLoginTxt" for="remAutoLogin">
-									<input id="remAutoLogin" class="loginFormCbx" type="checkbox" title="十天内免登录" tabindex="3"/>十天内免登录
+									<input id="remAutoLogin" class="loginFormCbx"  name="autoLogin" type="checkbox" checked="checked" title="十天内免登录" tabindex="3"/>十天内免登录
 								</label>
 							</div>
 							<div class="forgetPwdLine">
