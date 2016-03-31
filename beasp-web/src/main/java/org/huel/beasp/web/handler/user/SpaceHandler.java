@@ -15,6 +15,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.huel.beasp.entity.book.ApplyBook;
 import org.huel.beasp.entity.book.Book;
 import org.huel.beasp.entity.book.BookUser;
 import org.huel.beasp.entity.book.Category;
@@ -25,6 +26,7 @@ import org.huel.beasp.entity.book.Style;
 import org.huel.beasp.entity.book.Want;
 import org.huel.beasp.entity.user.User;
 import org.huel.beasp.exception.BeaspException;
+import org.huel.beasp.service.book.ApplyBookService;
 import org.huel.beasp.service.book.BookService;
 import org.huel.beasp.service.book.BookUserService;
 import org.huel.beasp.service.book.ExchangeService;
@@ -61,6 +63,8 @@ public class SpaceHandler {
 	@Autowired private BookUserService bookUserService;
 	@Autowired private ShareService shareService;
 	@Autowired private ExchangeService exchangeService;
+	@Autowired private ApplyBookService applyBookService;
+	
 	/**
 	 * 空间首页
 	 * @return
@@ -168,6 +172,24 @@ public class SpaceHandler {
 	}
 	
 	/**
+	 * 求书籍确认
+	 * @return
+	 */
+	@RequestMapping("/space/book/sure")
+	public String bookSure(@RequestParam("applyBookId") Integer applyBookId) {
+		
+		if(applyBookId != null && applyBookId > 0) {
+			ApplyBook applyBook = applyBookService.getById(applyBookId);
+			if(applyBook.getState().equals(State.WAITSURE)) {//处于待申请者确认
+				applyBook.setState(State.WAITVERIFY);
+				applyBookService.saveOrUpdate(applyBook);
+			} else 
+				return "redirect:/space/require";
+		} 
+		return "redirect:/space/require";
+	}
+	
+	/**
 	 * 上传书籍
 	 * @param book
 	 * @param image
@@ -177,7 +199,8 @@ public class SpaceHandler {
 	 */
 	@RequestMapping(value="/space/book/b", method=RequestMethod.POST)
 	public String upload(Book book, @RequestParam("image") MultipartFile image,
-			HttpServletRequest request, Map<String, Object> map, Wants wants) {
+			HttpServletRequest request, Map<String, Object> map, Wants wants,
+			@RequestParam(value="applyBookId", required=false) Integer applyBookId) {
 		if(image != null) {
 			if(!FileUtils.validateImageFileType(image, image.getContentType(), image.getOriginalFilename())) {
 				System.out.println(image.getOriginalFilename()+"--"+image.getName()+"--"+image.getContentType()+"--"+image.getSize());
@@ -204,7 +227,17 @@ public class SpaceHandler {
 			try {
 				FileUtils.saveImageFile(image, book.getCategory().getId(), book.getId(), fileName, request);
 			} catch (Exception e) {}
+			
+			//求书籍
+			if(applyBookId != null && applyBookId > 0) {//关联上传书籍
+				ApplyBook applyBook = applyBookService.getById(applyBookId);
+				applyBook.setBook(book);
+				applyBook.setApplyer(WebUtils.getUser(request));
+				applyBook.setState(State.WAITSURE);
+				applyBookService.saveOrUpdate(applyBook);
+			}
 		}
+		
 		return "redirect:/space/index";
 	}
 
@@ -224,10 +257,24 @@ public class SpaceHandler {
 	 * @return
 	 */
 	@RequestMapping(value="/space/book/b",method=RequestMethod.GET)
-	public String input(Map<String, Object> map, HttpSession session) {
+	public String input(Map<String, Object> map, HttpSession session,
+			@RequestParam(value="applyBookId", required=false) Integer applyBookId) {
 		initUpload(map);
 		map.put("book", new Book());
 		getMapWithBook(null, session, map);
+		/**求书籍**/
+		if(applyBookId != null && applyBookId > 0) {
+			ApplyBook applyBook = applyBookService.getById(applyBookId);
+			Book book = new Book(applyBook.getBookName(), applyBook.getBookAuthor(), applyBook.getBookVersion());
+			if(applyBook.getShareExchange() == 1) {
+				 book.setShare(true);
+			} else if(applyBook.getShareExchange() == 2){
+				book.setExchange(true); 
+			} 
+			book.setSummary(applyBook.getDescription());
+			map.put("book", book);
+			map.put("applyBookId", applyBookId);
+		}
 		return "front/user/space/upload";
 	}
 	/**
@@ -252,6 +299,102 @@ public class SpaceHandler {
 	}
 	
 	/**
+	 * 我的需求
+	 * @return
+	 */
+	@RequestMapping("/space/apply")
+	public String myApply(@RequestParam(value="pageNo", required = false, defaultValue = "1") String pageNoStr,
+			HttpSession session, Map<String, Object> map) {
+		Page<ApplyBook> page = 
+				applyBookService.findByApplyerId(WebUtils.getUser(session), WebUtils.getCurrentPage(pageNoStr),
+						Constants.APPLY_PAGE_SIZE_TWELVE_FRONT);
+		map.put("page", page);
+		getMap(session, map);
+		map.put("state", "apply");
+		getMap(page, map);
+		return "front/user/space/apply";
+	}
+	
+	/**
+	 * 我的需求
+	 * @return
+	 */
+	@RequestMapping("/space/apply/soe/{soe}")
+	public String myApply(@RequestParam(value="pageNo", required = false, defaultValue = "1") String pageNoStr,
+			@PathVariable(value="soe") int soe,
+			HttpSession session, Map<String, Object> map) {
+		Page<ApplyBook> page = 
+				applyBookService.findByApplyerIdAndShareExchange(WebUtils.getUser(session), soe, WebUtils.getCurrentPage(pageNoStr),
+						Constants.APPLY_PAGE_SIZE_TWELVE_FRONT);
+		map.put("page", page);
+		getMap(session, map);
+		map.put("state", "apply");
+		getMap(page, map);
+		return "front/user/space/apply";
+	}
+	
+
+	/**
+	 * 我的需求
+	 * @return
+	 */
+	@RequestMapping("/space/require")
+	public String myRequirer(@RequestParam(value="pageNo", required = false, defaultValue = "1") String pageNoStr,
+			HttpSession session, Map<String, Object> map) {
+		Page<ApplyBook> page = 
+				applyBookService.findByRequirerId(WebUtils.getUser(session), WebUtils.getCurrentPage(pageNoStr),
+						Constants.APPLY_PAGE_SIZE_TWELVE_FRONT);
+		map.put("page", page);
+		getMap(session, map);
+		map.put("state", "require");
+		getMap(page, map);
+		return "front/user/space/apply";
+	}
+	
+	/**
+	 * 我的需求
+	 * @return
+	 */
+	@RequestMapping("/space/require/soe/{soe}")
+	public String myRequirer(@RequestParam(value="pageNo", required = false, defaultValue = "1") String pageNoStr,
+			@PathVariable(value="soe") int soe,
+			HttpSession session, Map<String, Object> map) {
+		Page<ApplyBook> page = 
+				applyBookService.findByRequirerIdAndShareExchagne(WebUtils.getUser(session), soe, WebUtils.getCurrentPage(pageNoStr),
+						Constants.APPLY_PAGE_SIZE_TWELVE_FRONT);
+		map.put("page", page);
+		getMap(session, map);
+		map.put("state", "require");
+		getMap(page, map);
+		return "front/user/space/apply";
+	}
+	
+	public void getMap(Page<ApplyBook> applyBooks,
+			Map<String, Object> map) {
+		//评论时间个性化
+		Map<Integer, String> create_time = new HashMap<Integer, String>();
+		for(ApplyBook applyBook : applyBooks.getContent()) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			Date nowdate = new Date();//当前时间
+			long time_sub = nowdate.getTime()-applyBook.getCreateTime().getTime();//时间差
+			System.out.println(time_sub);
+			if(time_sub < 1000*60) {//1分钟之内
+				create_time.put(applyBook.getId(), time_sub/1000+"秒前");
+			} else if(time_sub < 1000*60*60){//1小时之内
+				create_time.put(applyBook.getId(), time_sub/(1000*60)+"分钟前");
+			} else if(time_sub < 1000*60*60*24) {//1天之内
+				create_time.put(applyBook.getId(), time_sub/(1000*60*60)+"小时前");
+			} else if(time_sub < 1000*60*60*24*7) {//7天之内
+				create_time.put(applyBook.getId(), time_sub/(1000*60*60*24)+"天前");
+			} else {
+				create_time.put(applyBook.getId(), sdf.format(applyBook.getCreateTime()));
+			}
+		}
+		map.put("create_time", create_time);
+//		map.put("requirer_count", applyBookService.getDictinctByRequirerId());
+	}
+	
+	/**
 	 * 我的点赞
 	 * @param pageNoStr
 	 * @param session
@@ -266,6 +409,7 @@ public class SpaceHandler {
 		map.put("state", "praise");
 		return "front/user/space/praise";
 	}
+
 	
 	/**
 	 * 我的收藏
@@ -784,6 +928,8 @@ public class SpaceHandler {
 		map.put("collectionCount", bookUserService.getCountByUserIdAndState(WebUtils.getUser(session).getId(), State.COLLECTION));
 		map.put("praiseCount", bookUserService.getCountByUserIdAndState(WebUtils.getUser(session).getId(), State.PRAISE));
 		map.put("recycleCount", bookService.getCountByUserIdAndState(WebUtils.getUser(session).getId(), State.RECYCLEBIN));//回收站书籍数量
+		map.put("applyCount", applyBookService.getCountByRequirerId(WebUtils.getUser(session).getId()) + 
+				applyBookService.getCountByApplyerId(WebUtils.getUser(session).getId()));
 		map.put("visitors", visitorService.findVisitorByUser_Id(WebUtils.getUser(session).getId()));//获取所有访客信息
 		//当前用户收藏的书籍
 		List<BookUser> bus = bookUserService.findByUser_IdAndState(WebUtils.getUser(session).getId(), State.COLLECTION);

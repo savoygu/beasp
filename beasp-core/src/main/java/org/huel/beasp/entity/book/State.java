@@ -129,6 +129,54 @@ public enum State {
 		public String getName() {
 			return "点赞";
 		}
+	},
+	
+	/**
+	 * 2.人与非所属和所属书籍的关系
+	 */
+	
+	WAITUPLOAD {
+
+		@Override
+		public String getName() {
+			return "等待上传";
+		}
+	},
+	UPLOADED {
+
+		@Override
+		public String getName() {
+			return "已经上传";
+		}
+	},
+	
+	WAITSURE {
+
+		@Override
+		public String getName() {
+			return "等待确认";
+		}
+	},
+	WAITVERIFY {
+
+		@Override
+		public String getName() {
+			return "等待审核";
+		}
+	},
+	VERIFYPASS {
+
+		@Override
+		public String getName() {
+			return "审核通过";
+		}
+	},
+	VERIFYFAIL {
+
+		@Override
+		public String getName() {
+			return "审核失败";
+		}
 	};
 	public abstract String getName();
 }

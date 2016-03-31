@@ -1,5 +1,8 @@
 package org.huel.beasp.service.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -19,6 +22,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +39,55 @@ public class UserService {
 	@Autowired private CityService cityService;
 	@Autowired private ProvinceService provinceService;
 	@Autowired private SchoolRepository schoolRepository;
+	
+	
+	/**
+	 * 按参数查询用户
+	 * @param pageNo
+	 * @param pageSize
+	 * @param param
+	 * @return
+	 */
+	@Transactional(readOnly = true)
+	public Page<User> findByParams(int pageNo, 
+			int pageSize, final String param) {
+		Sort sort = new Sort(Direction.DESC, "createTime", "id");
+		Pageable pageable = new PageRequest(pageNo-1, pageSize, sort);
+		if(param != null) {
+			final String [] params = param.split("-");
+			if(params.length == 4) {//说明ok
+				Specification<User> specification = new Specification<User>() {
+
+					@Override
+					public Predicate toPredicate(Root<User> root,
+							CriteriaQuery<?> query, CriteriaBuilder cb) {
+						Predicate predicate1 = null,predicate2 = null,predicate3 = null, predicate4 = null;
+						List<Predicate> predicates = new ArrayList<Predicate>();
+						if(params[0] != null && !"$".equals(params[0]) ) {
+							predicate1 = cb.like(root.get("userName").as(String.class), "%"+params[0]+"%");
+							predicates.add(predicate1);
+						} 
+						if(params[1] != null && !"$".equals(params[1]) ) {
+							predicate2 = cb.like(root.get("nickName").as(String.class), "%"+params[1]+"%");
+							predicates.add(predicate2);
+						} 
+						if(params[2] != null && !"$".equals(params[2]) ) {
+							predicate3 = cb.like(root.get("phone").as(String.class), "%"+params[2]+"%");
+							predicates.add(predicate3);
+						}
+						if(params[3] != null && !"$".equals(params[3]) ) {
+							predicate4 = cb.like(root.get("email").as(String.class), "%"+params[3]+"%");
+							predicates.add(predicate4);
+						}
+						return query.where(predicates.toArray(new Predicate[predicates.size()])).getRestriction();
+					}
+					
+				};
+				return userRespository.findAll(specification, pageable);
+			}
+		}
+		return userRespository.findAll(pageable);
+	}
 	
 	/**
 	 * 修改密码

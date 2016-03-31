@@ -36,7 +36,7 @@
 						<a class="btn btn-default" href="<%=userAdminPath %>/user" role="button">添加</a>
 						<a class="btn btn-primary" href="<%=userAdminPath %>/user/find" role="button">查询</a>					
 						<button type="button" class="btn btn-success" id="batchDelBtn">删除</button>
-						<button type="button" class="btn btn-info" id="batchDelBtnRecyclebin">回收站</button>
+						<button type="button" class="btn btn-info">操作四</button>
 						<button type="button" class="btn btn-warning">操作五</button>
 						<button type="button" class="btn btn-danger">操作六</button>
 					</div>
@@ -108,7 +108,7 @@
 							</c:when>
 							<c:otherwise>
 								<tr class="danger">
-									<td colspan="16">暂时没有任何类别!</td>
+									<td colspan="16">暂时没有任何用户!</td>
 								</tr>
 							</c:otherwise>
 						</c:choose>
@@ -139,15 +139,15 @@
 			//批量删除书籍
 			$("#batchDelBtn").batchDelete({
 				list:"bookids",
-	    		alertMsg:"请选择你要删除的书籍!",
-	    		confirmMsg:"确定要删除这些书籍吗?",
+	    		alertMsg:"请选择你要删除的用户!",
+	    		confirmMsg:"确定要删除这些用户吗?",
 	    		url:"<%=userAdminPath%>/user/ids"
 			});
 			
 			$("#batchDelBtnRecyclebin").batchDelete({
 				list:"bookids",
-	    		alertMsg:"请选择你要完全删除的书籍!",
-	    		confirmMsg:"确定要完全删除这些书籍吗?",
+	    		alertMsg:"请选择你要完全删除的用户!",
+	    		confirmMsg:"确定要完全删除这些用户吗?",
 	    		url:"<%=userAdminPath%>/user/ids",
 	    		isRecyclebin:true
 			});

@@ -14,8 +14,7 @@
 		<div class="nav-content">
 			<ul class="cf">
 				<li><a target="_self" href="<%=beaspPath%>/book/list/category/0"><i class="fa fa-stack-exchange"></i> 分享与交换</a></li>
-				<!-- <li><a target="_self" href="#"><i class="fa fa-hand-scissors-o"></i>
-						二手市场</a></li> -->
+				<li><a target="_self" href="<%=beaspPath%>/topic"><i class="fa fa-hand-scissors-o"></i>求书籍</a></li>
 				<li><a rel="nofollow"
 					href="http://weibo.com/3195484694" target="_blank"><i
 						class="fa fa-weibo"></i> &nbsp;书籍交换与分享平台微博</a></li>

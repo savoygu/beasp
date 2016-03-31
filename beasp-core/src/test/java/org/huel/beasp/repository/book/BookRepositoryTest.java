@@ -18,6 +18,7 @@ import org.huel.beasp.entity.book.Style;
 import org.huel.beasp.entity.book.Want;
 import org.huel.beasp.entity.common.QueryResult;
 import org.huel.beasp.entity.user.User;
+import org.huel.beasp.service.book.ApplyBookService;
 import org.huel.beasp.service.book.BookService;
 import org.huel.beasp.service.book.BookUserService;
 import org.huel.beasp.service.book.ExchangeService;
@@ -57,6 +58,36 @@ public class BookRepositoryTest {
 	@Autowired private ShareService shareService;
 	@Autowired private ExchangeRepository exchangeRepository;
 	@Autowired private ExchangeService exchangeService;
+	@Autowired private ApplyBookRepository applyBookRepository;
+	@Autowired private ApplyBookService applyBookService;
+	
+	@Test
+	public void testgetDictinctByRequirer_Id () {
+		System.out.println(applyBookRepository.getDictinctByRequirer_Id());
+	}
+	
+	@Test
+	public void testfindByStateInAndShareExchange() {
+		System.out.println(applyBookService.findByStateInAndShareExchange("time_asc", "exchange", 2, 1, 5));
+	}
+	
+	@Test
+	public void testfindByRequirerIdAndStateInAndShareExchange() {
+		User user = new User();
+		user.setId(1);
+		System.out.println(applyBookService.findByRequirerIdAndStateInAndShareExchange(user, 1, "share", "time_desc", 1, 5));
+	}
+	
+	@Test
+	public void findByRequirer_IdAndStateInAndShareExchange () {
+		System.out.println(applyBookRepository.findByRequirer_IdAndStateInAndShareExchange(1, Arrays.asList(State.WAITUPLOAD),
+				0, new PageRequest(0, 5)));
+	}
+	
+	@Test
+	public void testfindByRequirer_Id () {
+		System.out.println(applyBookRepository.findByRequirer_Id(1, new PageRequest(0, 5)));
+	}
 	
 	@Test
 	public void testgetLastestBrowseByUser_Id() {

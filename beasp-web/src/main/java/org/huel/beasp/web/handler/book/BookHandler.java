@@ -7,12 +7,14 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.huel.beasp.entity.book.ApplyBook;
 import org.huel.beasp.entity.book.Book;
 import org.huel.beasp.entity.book.Exchange;
 import org.huel.beasp.entity.book.Share;
 import org.huel.beasp.entity.book.State;
 import org.huel.beasp.entity.book.Style;
 import org.huel.beasp.entity.common.PageIndex;
+import org.huel.beasp.service.book.ApplyBookService;
 import org.huel.beasp.service.book.BookService;
 import org.huel.beasp.service.book.CategoryService;
 import org.huel.beasp.service.book.ExchangeService;
@@ -43,6 +45,21 @@ public class BookHandler {
 	@Autowired private StyleService styleService;
 	@Autowired private ShareService shareService;
 	@Autowired private ExchangeService exchangeService;
+	@Autowired private ApplyBookService applyBookService;
+	
+	/**
+	 * 求书籍列表
+	 * @param pageNoStr
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping("/books/apply")
+	public String applyBookList(@RequestParam(value="pageNo", required=true, defaultValue="1") String pageNoStr,
+			Map<String, Object> map) {
+		Page<ApplyBook> applyBooks =  applyBookService.findAll(WebUtils.getCurrentPage(pageNoStr), Constants.PAGE_SIZE_ADMIN);
+		map.put("page", applyBooks);
+		return "admin/book/apply/list";
+	}
 	
 	/**
 	 * 书籍分享列表
@@ -66,6 +83,46 @@ public class BookHandler {
 		Page<Exchange> exchanges = exchangeService.findAll(WebUtils.getCurrentPage(pageNoStr), Constants.PAGE_SIZE_ADMIN);
 		map.put("page", exchanges);
 		return "admin/book/exchange/list";
+	}
+	
+	/**
+	 * 求书籍审核失败
+	 * @return
+	 */
+	@RequestMapping("/book/fail/ids")
+	public String batchFailBook(@RequestParam(value="parameter", required=true) String param,
+			@RequestParam(value="pageNo", required=true, defaultValue="1") String pageNoStr,
+			Map<String, Object> map) {
+		if(param != null) {
+			String [] params = param.split("-");
+			List<Integer> ids  = new ArrayList<Integer>();
+			for(String str : params) {
+				ids.add(Integer.parseInt(str));
+			}
+			applyBookService.batchFailBook(ids);
+		}
+		backToBefore(pageNoStr, map);//回到从前页
+		return "redirect:/admin/book/books/apply";
+	}
+	
+	/**
+	 * 求书籍审核通过
+	 * @return
+	 */
+	@RequestMapping("/book/pass/ids")
+	public String batchPassBook(@RequestParam(value="parameter", required=true) String param,
+			@RequestParam(value="pageNo", required=true, defaultValue="1") String pageNoStr,
+			Map<String, Object> map) {
+		if(param != null) {
+			String [] params = param.split("-");
+			List<Integer> ids  = new ArrayList<Integer>();
+			for(String str : params) {
+				ids.add(Integer.parseInt(str));
+			}
+			applyBookService.batchPassBook(ids);
+		}
+		backToBefore(pageNoStr, map);//回到从前页
+		return "redirect:/admin/book/books/apply";
 	}
 	
 	/**

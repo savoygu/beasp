@@ -18,6 +18,23 @@ $(function() {
 		}
 	});
 	
+	$("#js-signin-btn").on("click", function() {
+		signin();
+	}) 
+	
+	$("#js-signup-btn").on("click", function() {
+		signup();
+	})
+	
+	/*var oSignin = document.getElementById("js-signin-btn");
+	oSignin.onclick = function() {
+		signin();
+	}
+	var oSignup = document.getElementById("js-signup-btn");
+	oSignup.onclick = function() {
+		signup();
+	}*/
+	
 	/**
 	 * 1.输入框得到焦点隐藏错误信息
 	 * 2.输入框失去焦点进行校验 
@@ -257,7 +274,7 @@ function _hyz() {
 	$("#imgVerifyCode").attr("src", "/VerifyCodeServlet.servlet?a="+new Date().getTime());
 }
 
-window.onload = function() {
+/*window.onload = function() {
 	var oSignin = document.getElementById("js-signin-btn");
 		oSignin.onclick = function() {
 			signin();
@@ -266,7 +283,9 @@ window.onload = function() {
 		oSignup.onclick = function() {
 			signup();
 		}
-} 
+} */
+
+
 
 function signup() {
 	//获取页面的高度和宽度

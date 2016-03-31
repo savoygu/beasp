@@ -50,6 +50,12 @@ function winOpen(strURL,strName,width,height){
 					<div class="main-bd">
 						<div class="my-space-upload upload-tl">
 							<form:form action="${pageContext.request.contextPath }/space/book/b" method="POST" modelAttribute="book" id="uploadForm" enctype="multipart/form-data">
+								
+								<!-- 求书籍 -->
+								<c:if test="${!empty applyBookId }">
+									<input type="hidden" name="applyBookId" value="${applyBookId }">
+								</c:if>
+								
 								<div class="cf upload-group">
 									<div class="upload-label l">
 										<label for="name" class="lableClass">书籍名称：</label>

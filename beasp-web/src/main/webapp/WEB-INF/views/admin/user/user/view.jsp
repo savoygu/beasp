@@ -46,6 +46,7 @@
 								<a href="<%=bookAdminPath %>/users" class="btn btn-info">用户列表</a>
 								<a href="<%=bookAdminPath %>/books/exchange" class="btn btn-info">交换列表</a>
 								<a href="<%=bookAdminPath %>/books/share" class="btn btn-info">分享列表</a>
+								<a href="<%=bookAdminPath %>/books/apply" class="btn btn-info">求书籍列表</a>
 							</small>
 						</h3>
 					</div>

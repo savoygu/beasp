@@ -197,6 +197,49 @@ select { margin: 0px; cursor: pointer; font-weight: normal; background-color: #F
 .profile-li em{color: #3A3D3F;}
 .profile-li.city em{margin-right: 10px;}
 
+/**求书籍页**/
+/* 求书籍容器 */
+.cls-box {width: 100%;}
+.cls-box ul {width: 1000px; margin: 0 -20px 0 -20px;}
+.cls-box li{float: left; width: 235px; height: 197px; margin-right: 20px; margin-top: 22px; color: #666; font-size: 12px; position: relative; padding: 0px;}
+.cls-box li > div{position: absolute; box-sizing: border-box;-moz-box-sizing: border-box; -webkit-box-sizing: border-box; padding: 20px 15px 9px; height: 197px; border: 1px solid #e4e4e4; background: #fff;}
+.cls-box li:nth-child(4n+4) {margin-right: 0;}
+.cls-box i.ddsc, .cls-box i.yjsc, .cls-box i.ddqr, .cls-box i.ddsh, .cls-box i.shtg {display: block;color: #fff;/*  width: 50px; */ padding: 0px 7px; font-size: 12px; height: 22px; line-height: 22px; text-align: center; position: absolute; top: -3px; right: 11px; background: #2d85ca; border-top: #9dc6e6; border-bottom: #e3eff8;}
+/* 已经上传 */
+.cls-box i.yjsc {background: #35b558;  border-top: #a1dcb1;  border-bottom: #e4f5e9;}
+/* 等待确认 */
+.cls-box i.ddqr {background: #ff5500;  border-top: #ffb088;  border-bottom: #ffe8dd;}
+/* 等待审核： */
+.cls-box i.ddsh {background: #ff5500;  border-top: #ffb088;  border-bottom: #ffe8dd;}
+/* 审核通过： */
+.cls-box i.shtg { background: #35b558;  border-top: #a1dcb1;  border-bottom: #e4f5e9;}
+
+.cls-box li h2{font-size: 14px; color: #333; font-weight: 700; height: 36px; overflow: hidden; margin-bottom: 10px; text-overflow: ellipsis;}
+.cls-box li p{margin-bottom: 10px;}
+.cls-box li p span{float: left; width: 40%;}
+.cls-box li p span:last-child{/* width: 20%; */}
+.cls-box li i.user{width: 12px; height: 16px; float: left; background-position: 0 0;}
+.cls-box li i.cl-icon{background: url("/resources/images/cl-icon.png") no-repeat; display: inline-block; vertical-align: text-bottom;}
+.cls-box li p span.username{height: 16px; width: 60px; margin-left: 5px; display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.cls-box li span.gray{color: #999;}
+.cls-box li i.time{width: 16px; height: 16px; background-position: -14px 0px;}
+.cls-box li i.laud{width: 12px; height: 13px; background-position: -32px 0px;}
+.cls-box li span.clk:hover,.cls-box li span.active{cursor: pointer;color: #ff5500;}
+.cls-box li span.clk:hover i.laud,.cls-box li span.active i.laud{width: 12px;height: 13px;background-position: -46px 0;}
+.cls-box li blockquote{display: block; line-height: 20px; height: 60px; overflow: hidden;}
+.cls-box li>div:hover{min-height: 170px;height: auto;z-index: 4;border: 1px solid #35b558;}
+.cls-box li>div:hover blockquote{height: auto;overflow: visible;}
+.cls-box li>div:hover blockquote .clip{overflow: visible;text-overflow:inherit;white-space:normal;height: auto;}
+.cls-box li p.clip.no_link{width: 100%;text-overflow: ellipsis; overflow: hidden; height: 60px;}
+
+.cls-box li .upload {position: absolute; bottom: 0px; right: 0px; padding: 7px; border-top: 1px solid #35B558; 
+	border-left: 1px solid #35B558; background-color: #35B558;color: #fff;}
+.cls-box li .upload:hover{background-color: #66d178; color: #fff;}
+
+.cls-box li .info{ position: absolute; left: 240px; top: 0px; z-index: 5px; background-color: #fff; width: 235px; display: none; box-shadow:0px 4px 8px #BBB;}
+.cls-box li:hover .info {display: block;}
+.cls-box li:nth-child(3) .info{left: -240px;}
+
 /**删除图标动画**/
 @keyframes delete {
   0% {

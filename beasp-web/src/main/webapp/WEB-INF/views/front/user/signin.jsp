@@ -89,7 +89,7 @@
 								<a class="forgetPwd" title="找回密码" target="_blank" href="<%=beaspPath%>/account/newforgot<c:if test='${!empty fromurl }'>/fromurl/${fromurl }</c:if>">忘记密码了?</a>
 							</div>
 						</div>
-						<input type="hidden" name="fromurl" value="${fromurl }">
+						<input type="hidden" name="fromurl" value='<c:if test="${empty fromurl  }">${param.fromurl }</c:if><c:if test="${!empty fromurl }">${fromurl }</c:if>'>
 						<div class="loginFormBtn">
 							<button id="loginBtn" class="btn btn-main btn-login" type="submit" tabindex="6">登录</button>
 							<a id="lfBtnReg" class="btn btn-side btn-reg" tabindex="7" target="_blank" href="<%=beaspPath%>/account/signup<c:if test='${!empty fromurl }'>/fromurl/${fromurl }</c:if>">注册</a>

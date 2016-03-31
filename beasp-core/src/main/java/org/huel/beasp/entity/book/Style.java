@@ -88,7 +88,7 @@ public class Style implements Serializable{
 
 	@Transient
 	public String getImage140FullPath() {
-		return "/resources/images/book/" + this.getBook().getId() + "/"
+		return "/resources/images/book/" + this.getBook().getCategory().getId() + "/"
 				+ this.getBook().getId() + "/140x/" + this.imageName;
 	}
 

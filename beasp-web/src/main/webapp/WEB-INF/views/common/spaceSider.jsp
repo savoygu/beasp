@@ -43,8 +43,13 @@
 	</ul>
 	<ul class="nav">
 		<li>
-			<a class="js-count-book <c:if test='${state ne "browse" and state ne "collection" and state ne "praise"   and state ne "recycle" and state ne "share" and state ne "exchange" }'>active</c:if>" href="<%=beaspPath%>/space/index">
+			<a class="js-count-book <c:if test='${state ne "browse" and state ne "collection" and state ne "praise"   and state ne "recycle" and state ne "share" and state ne "exchange" and state ne "apply" and state ne "require" }'>active</c:if>" href="<%=beaspPath%>/space/index">
 				<i class="fa fa-book"></i>我的书籍<em class="got-num">${count }</em>
+			</a>
+		</li>
+		<li>
+			<a class="js-count-share <c:if test='${state eq "apply" or state eq "require" }'>active</c:if>" href="<%=beaspPath%>/space/require">
+				<i class="fa fa-share"></i>我的求书籍<em class="got-num">${applyCount }</em>
 			</a>
 		</li>
 		<li>

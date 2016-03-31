@@ -145,18 +145,35 @@ public class UserHandler {
 	}
 	
 	/**
+	 * 用户查询
+	 * @return
+	 */
+	@RequestMapping(value="/user/find", method=RequestMethod.GET)
+	public String find() {
+		return "admin/user/user/find";
+	}
+	
+	/**
 	 * 用户列表
 	 * @return
 	 */
 	@RequestMapping("/users")
 	public String list(@RequestParam(value="pageNo", required=false, defaultValue="1") String pageNoStr,
 			Map<String, Object> map,
-			@RequestParam(value="status", required=false) Integer status) {
-		Page<User> users;
-		if(status != null && status >=0 && status <3) {
-			users = userService.getPageByStatus(WebUtils.getCurrentPage(pageNoStr), Constants.PAGE_SIZE_ADMIN, status);	
+			@RequestParam(value="status", required=false) Integer status,
+			@RequestParam(value="param", required=false) String param,
+			@RequestParam(value="query", required=false) String query) {
+		Page<User> users = null;
+		if(query!=null && "true".equals(query)) {
+			users = userService.findByParams(WebUtils.getCurrentPage(pageNoStr), Constants.PAGE_SIZE_ADMIN, param);
+			map.put("query", "true");
+			map.put("params", param);
 		} else {
-			users = userService.getPage(WebUtils.getCurrentPage(pageNoStr), Constants.PAGE_SIZE_ADMIN);
+			if(status != null && status >=0 && status <3) {
+				users = userService.getPageByStatus(WebUtils.getCurrentPage(pageNoStr), Constants.PAGE_SIZE_ADMIN, status);	
+			} else {
+				users = userService.getPage(WebUtils.getCurrentPage(pageNoStr), Constants.PAGE_SIZE_ADMIN);
+			}
 		}
 		map.put("page", users);
 		return "admin/user/user/list";

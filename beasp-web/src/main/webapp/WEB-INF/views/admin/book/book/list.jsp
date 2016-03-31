@@ -142,6 +142,7 @@
 	    		url:"<%=bookAdminPath%>/book/ids"
 			});
 			
+			//批量删除回收站书籍
 			$("#batchDelBtnRecyclebin").batchDelete({
 				list:"bookids",
 	    		alertMsg:"请选择你要完全删除的书籍!",
@@ -150,6 +151,7 @@
 	    		isRecyclebin:true
 			});
 			
+			//批量审核书籍
 			$("#batchConfirmBook").batchDelete({
 				list:"bookids",
 				alertMsg:"请选择你要审核的书籍!",

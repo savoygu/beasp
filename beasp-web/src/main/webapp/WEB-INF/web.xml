@@ -86,6 +86,10 @@
         <url-pattern>/space/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
+        <filter-name>LoginValidateFilter</filter-name>
+        <url-pattern>/topic/my</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
     	<filter-name>AutoLoginFilter</filter-name>
     	<url-pattern>/*</url-pattern>
     </filter-mapping> 

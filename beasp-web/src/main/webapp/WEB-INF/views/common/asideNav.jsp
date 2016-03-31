@@ -45,6 +45,11 @@
 					<li><a href="<%=bookAdminPath%>/books/share">&gt;&nbsp;&nbsp;书籍分享列表</a></li>
 				</ul>
 			</li>
+			<li class=""><div class="link"><i class="fa fa-globe"></i>求书籍管理<i class="fa fa-chevron-down"></i></div>
+				<ul class="submenu" style="display: none;">
+					<li><a href="<%=bookAdminPath%>/books/apply">&gt;&nbsp;&nbsp;求申请列表</a></li>
+				</ul>
+			</li>
 			<li class=""><div class="link"><i class="fa fa-globe"></i>报表管理<i class="fa fa-chevron-down"></i></div>
 				<ul class="submenu" style="display: none;">
 					<li><a href="<%=bookAdminPath%>/chart">&gt;&nbsp;&nbsp;书籍报表</a></li>

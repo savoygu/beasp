@@ -98,13 +98,13 @@
 								<div class="col-sm-6">
 									<form:select path="province">
 										<form:option value="">请选择省...</form:option>
-										<form:options items="${provinces }" itemLabel="province" itemValue="provinceId"/>
+										<form:options items="${provinces }" itemLabel="name" itemValue="id"/>
 									</form:select>
 									<form:select path="city">
 										<form:option value="">请选择市...</form:option>
 									</form:select>
-									<form:select path="area">
-										<form:option value="">请选择区/县...</form:option>
+									<form:select path="school">
+										<form:option value="">请选择学校...</form:option>
 									</form:select>
 								</div>
 							</div>
@@ -296,7 +296,7 @@
 							alert("当前省没有市!");
 						} else {
 							for(var i=0; i<data.length; i++) {
-								$("#city").append("<option value='"+data[i].cityId+"'>"+data[i].city+"</option>");								
+								$("#city").append("<option value='"+data[i].id+"'>"+data[i].name+"</option>");								
 							}
 						}
 					})
@@ -307,14 +307,14 @@
 				$("#area option:not(:first)").remove();
 				var city = $(this).val();
 				if(city != "") {
-					var url="<%=userAdminPath%>/ajaxGetAreas";
+					var url="<%=userAdminPath%>/ajaxGetSchools";
 					var args={"cityId":city, "time":new Date()};
 					$.getJSON(url, args, function(data) {
 						if(data.length == 0) {
 							alert("当前市没有区或县!");
 						} else {
 							for(var i=0; i<data.length; i++) {
-								$("#area").append("<option value='"+data[i].areaId+"'>"+data[i].area+"</option>");						
+								$("#school").append("<option value='"+data[i].id+"'>"+data[i].name+"</option>");						
 							}
 						}
 					})

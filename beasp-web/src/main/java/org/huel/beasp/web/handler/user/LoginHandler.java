@@ -55,7 +55,7 @@ public class LoginHandler {
 				}
 			}
 		}
-		return "redirect:/account/signin";
+		return "redirect:/";
 	}
 	
 	/**
@@ -144,7 +144,10 @@ public class LoginHandler {
 			@RequestParam("fromurl") String fromurl, @RequestParam("autoLogin") boolean autoLogin,
 			HttpServletRequest request, HttpServletResponse response) {
 		if(WebUtils.getUser(request) != null) {//是否存在用户
-			return "redirect:/book/list";
+			if(fromurl != null && !"".equals(fromurl)) {
+				fromurl = new String(Base64.decodeBase64(fromurl.trim().getBytes()));//获取解码后的url 
+				return "redirect:"+fromurl;
+			}
 		}
 		/**
 		 * 1. 校验
@@ -331,8 +334,14 @@ public class LoginHandler {
 	 * @return
 	 */
 	@RequestMapping(value="/account/signin", method=RequestMethod.GET)
-	public String signIn(HttpServletRequest request, HttpServletResponse response) {
+	public String signIn(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam(value="fromurl", required=false) String fromurl) {
 		if(WebUtils.getUser(request) != null) {//是否存在用户
+			//单点登录
+			if(fromurl != null && !"".equals(fromurl)) {
+				fromurl = new String(Base64.decodeBase64(fromurl.trim().getBytes()));//获取解码后的url 
+				return "redirect:"+fromurl;
+			}
 			return "redirect:/";
 		}
 		String cookieValue = WebUtils.getCookieByName(request, "beaspName");

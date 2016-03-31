@@ -93,6 +93,7 @@
     		}
     	})
     };
+   
     /**批量删除**/
     $.fn.batchDelete = function(opts){
     	var settings = $.extend({
@@ -102,7 +103,9 @@
     		url:"",
     		form:"_form",
     		isAdd:false,//是要还原吗?(针对样式设置为可见)
-    		isRecyclebin:false//是来自回收站吗?(针对书籍,是否是从回收站删除的)
+    		isRecyclebin:false,//是来自回收站吗?(针对书籍,是否是从回收站删除的)
+    		isPass:false,
+    		isFail:false
     	}, opts||{});
     	this.on("click", function() {
     		var param = "";
@@ -123,6 +126,12 @@
     			}
     			if(settings.isRecyclebin) {
     				$("#"+settings.form).append("<input type='hidden' name='isRecyclebin' value='"+settings.isRecyclebin+"'>");
+    			}
+    			if(settings.isPass) {
+    				$("#"+settings.form).append("<input type='hidden' name='isPass' value='"+settings.isPass+"'>");
+    			}
+    			if(settings.isFail) {
+    				$("#"+settings.form).append("<input type='hidden' name='isFail' value='"+settings.isFail+"'>");
     			}
     			$("#"+settings.form).submit();
     		}

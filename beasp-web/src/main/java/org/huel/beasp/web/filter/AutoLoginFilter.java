@@ -33,6 +33,14 @@ public class AutoLoginFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		HttpServletRequest req = (HttpServletRequest) request;
+		
+		/*URL*/
+		req.setAttribute("WWW_URL", req.getRequestURL().toString().replace(WebUtils.getRequestURI(req), ""));
+		req.setAttribute("CURRENT_URL", req.getRequestURL().toString());
+		req.setAttribute("REQUEST_URL", req.getRequestURI());
+		req.setAttribute("FROM_URL", WebUtils.getRequestURIWithParam(req));
+		req.setAttribute("COMPLETE_URL", req.getRequestURL().toString()+(req.getQueryString() == null ? "" : "?"+ req.getQueryString()));
+		
 		if(req.getSession().getAttribute("user") == null) {
 			String cookieValue = WebUtils.getCookieByName(req, "beaspName");
 			if(cookieValue != null) {
@@ -41,7 +49,7 @@ public class AutoLoginFilter implements Filter {
 					try {
 						String userName = URLDecoder.decode(cookieValues[0], "UTF-8");
 						String password = URLDecoder.decode(cookieValues[1], "UTF-8");
-						System.out.println("当前登录用户的：用户名"+userName+", 当前登录用户的：密码"+password);
+//						System.out.println("当前登录用户的：用户名"+userName+", 当前登录用户的：密码"+password);
 					} catch (UnsupportedEncodingException e) {
 					}
 				}
