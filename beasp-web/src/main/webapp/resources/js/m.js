@@ -11,8 +11,9 @@ $(function() {
 /* 搜索框 */
 $("#seobut").click(function() {
 	var seo = $("#searchtxt").val();
+	var pos = $("#currentPosition").text();
 	if (seo.length >= 1) {
-		window.location.href = "/book/search?words=" + seo;
+		window.location.href = "/book/search?words=" + seo + "&pos=" + pos;
 	}
 });
 $('#searchtxt').bind('keypress', function(event) {
@@ -20,7 +21,7 @@ $('#searchtxt').bind('keypress', function(event) {
 	if (event.keyCode == "13") {
 		var seo = $("#searchtxt").val();
 		if (seo.length >= 1) {
-			window.location.href = "/book/search?words=" + seo;
+			window.location.href = "/book/search?words=" + seo + "&pos=" + pos;
 		}
 	}
 });

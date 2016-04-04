@@ -33,6 +33,7 @@
 					<div class="suggest-input-box l">
 						<input class="suggest-input J-suggest-input" type="text" value="${words }" autocomplete="off" 
 							placeholder="请输入想搜索的内容..." data-suggest-trigger="suggest-trigger">
+						<input type="hidden" name="pos" value="" />
 						<s class="btn-text-clear" title="清空" data-clear-btn="clear-btn">清空</s>
 					</div>
 					<input class="btn-search" type="button" value="搜索" data-search-btn="search-btn">
@@ -49,35 +50,35 @@
 						<div class="result-header cf">
 							为您找到到相关<span>书籍${pageView.totalRecord }</span>个
 						</div>
-						<ul class="search-book">
-							<c:if test="${fn:length(pageView.records) > 0}">
-								<c:forEach items="${pageView.records }" var="book">
-									<li class="book-item border-btm">
-										<div class="book-item-content cf">
-											<div class="thumbnail">
-												<div class="thumbnail-inner">
-													<a target="_blank" href="<%=beaspPath %>/book/view/${book.id}">
-														<c:forEach items="${book.styles }" var="style">
-															<c:if test="${style.choice eq true }">
-																<img src="<%=beaspPath %>${style.imageFullPath}"/>
-															</c:if>
-														</c:forEach>
-													</a>
+						<c:if test="${fn:length(pageView.records) > 0}">
+							<ul class="search-book">
+									<c:forEach items="${pageView.records }" var="book">
+										<li class="book-item border-btm">
+											<div class="book-item-content cf">
+												<div class="thumbnail">
+													<div class="thumbnail-inner">
+														<a target="_blank" href="<%=beaspPath %>/book/view/${book.id}">
+															<c:forEach items="${book.styles }" var="style">
+																<c:if test="${style.choice eq true }">
+																	<img src="<%=beaspPath %>${style.imageFullPath}"/>
+																</c:if>
+															</c:forEach>
+														</a>
+													</div>
+												</div>
+												<div class="introduction">
+													<h2 class="title autowrap">
+														<a href="<%=beaspPath %>/book/view/${book.id}" target="_blank">${book.name }</a>
+													</h2>
+													<div class="chapter autowrap">书籍作者： ${book.author }</div>
+													<div class="description autowrap">书籍简介：${book.summary }</div>
 												</div>
 											</div>
-											<div class="introduction">
-												<h2 class="title autowrap">
-													<a href="<%=beaspPath %>/book/view/${book.id}" target="_blank">${book.name }</a>
-												</h2>
-												<div class="chapter autowrap">书籍作者： ${book.author }</div>
-												<div class="description autowrap">书籍简介：${book.summary }</div>
-											</div>
-										</div>
-									</li>
-								</c:forEach>
-							</c:if>
-						</ul>
-						<jsp:include page="/WEB-INF/views/common/frontSearchPaging-imooc.jsp"></jsp:include>
+										</li>
+									</c:forEach>
+							</ul>
+							<jsp:include page="/WEB-INF/views/common/frontSearchPaging-imooc.jsp"></jsp:include>
+						</c:if>
 					</div>
 				</div>
 				<div class="hot-search r"></div>

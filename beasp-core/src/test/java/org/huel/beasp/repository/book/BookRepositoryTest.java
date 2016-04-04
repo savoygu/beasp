@@ -257,7 +257,7 @@ public class BookRepositoryTest {
 	
 	@Test
 	public void testBaseDao() {
-		QueryResult<Book> qr = bookService.search(0, 12, "美好");
+		QueryResult<Book> qr = bookRepository.search(0, 12, "美好");
 		System.out.println(qr.getTotalRecord());
 		for(Book book : qr.getResultList()) {
 			System.out.println(book.getId()+"-----"+book.getName()+"-----"+book.getAuthor()+"-----"+book.getSummary());

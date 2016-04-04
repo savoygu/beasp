@@ -57,11 +57,24 @@ public class FrontBookHandler {
 	 * @return
 	 */
 	@RequestMapping("/book/search")
-	public String searchBooks(@RequestParam("words") String words,
+	public String searchBooks(@RequestParam("words") String words, @RequestParam("pos") String pos,
 			@RequestParam(value="pageNo", required=true, defaultValue="1") String pageNoStr,
-			Map<String, Object> map) {
+			Map<String, Object> map, HttpSession session) {
 		PageView<Book> pageView = new PageView<Book>(Constants.SEARCH_PAGE_SIZE_TWELVE_FRONT, WebUtils.getCurrentPage(pageNoStr));
 		QueryResult<Book> qr = bookService.search(pageView.getFirstResult(), pageView.getMaxResult(), words);
+		if(pos != null && !"".equals(pos)) {
+			List<Book> books = qr.getResultList();
+			List<Book> removeBooks = new ArrayList<Book>(); 
+			for(Book book : books) {//获取当前城市的书籍
+				if(!book.getUser().getCity().equals(pos)) {
+					removeBooks.add(book);
+				}
+			}
+			books.removeAll(removeBooks);
+			qr.setResultList(books);
+			qr.setTotalRecord(qr.getTotalRecord()-removeBooks.size());
+			session.setAttribute("pos", pos);
+		}
 		pageView.setQueryResult(qr);
 		map.put("pageView", pageView);
 		map.put("words", words);

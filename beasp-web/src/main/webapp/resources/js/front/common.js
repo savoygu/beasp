@@ -47,5 +47,6 @@ $(function() {
 				clearInterval(timer);
 			}
 		}, 30)
-	})
+	});
+	
 })

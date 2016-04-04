@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="<%=cssPath%>/front/common.css">
 <link rel="stylesheet" href="<%=cssPath%>/front/index.css">
 <link rel="stylesheet" href="<%=cssPath%>/front/login-regist.css">
+<link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -212,5 +213,8 @@
 	<script type="text/javascript" src="<%=jsPath%>/m.js"></script>
 	<script type="text/javascript" src="<%=jsPath%>/front/common.js"></script>
 	<script type="text/javascript" src="<%=jsPath%>/front/user/login-regist.js"></script>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=3313bd85191b382b9ffea3a4d10ab268&plugin=AMap.CitySearch"></script>
+    <!-- <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script> -->
+	<script type="text/javascript" src="<%=jsPath%>/front/lbs-amap.js"></script>
 </body>
 </html>

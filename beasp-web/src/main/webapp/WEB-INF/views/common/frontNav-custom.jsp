@@ -86,6 +86,7 @@
 						</div> -->
 					</li>
 				</c:if>
+				<li><a href="javascrip:void(0)"><i class="fa fa-map-marker" style="width: 12px; height: 12px; color: white;"></i><span id="currentPosition" style="display: inline-block;"><c:if test="${!empty pos }">${pos }</c:if></span></a></li>
 			</ul>
 		</div>
 	</div>

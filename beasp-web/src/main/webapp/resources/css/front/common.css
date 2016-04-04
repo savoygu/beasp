@@ -99,7 +99,7 @@ h1, h2, h3, h4, h5, h6 { font-size: 100%;font-weight: normal;font-family: "Micro
 
 
 /* 平台banner */
-.banner{background-image: url("/resources/images/home-bg.png"); height: 204px; background-position: center 0%; background-repeat: no-repeat; background-color: #17181c; position:fixed; width: 100%; z-index: 1; top: 50px;}
+.banner{/* background-image: url("/resources/images/home-bg.png"); */ height: 204px; /* background-position: center 0%; background-repeat: no-repeat; */ background-color: #17181c; position:fixed; width: 100%; z-index: 1; top: 50px;}
 /* 平台搜索 */
 .banseo{width: 546px; height: 34px; left: 0; right: 0; margin:auto; position: absolute; top: 116px;}
 /* 平台搜索框  */
