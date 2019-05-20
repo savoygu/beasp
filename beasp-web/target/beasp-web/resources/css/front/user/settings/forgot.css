@@ -1,0 +1,57 @@
+@CHARSET "UTF-8";
+.sig-head{height: 120px; text-align: center; background-color: #EDF1F2;}
+/* .sig-img{display: inline-block; height: 46px; width: 136px; background: transparent url("/resources/images/siglogo.png") no-repeat scroll center center; text-indent: 100%; white-space: nowrap; overflow: hidden; margin-top: 37px;} */
+.sig-img{color:#FFF; font-size: 18px; display: inline-block; height: 46px; width: 180px; white-space: nowrap; overflow: hidden; margin-top: 37px;} 
+#main{min-height: 0px; padding: 20px 0px;}
+.wcontainer{width: 1200px; margin: 0 auto; min-width: 660px;}
+.wwrap{padding: 20px;}
+.page-forgotpwd-wrap{width: 320px; padding: 10px 0px 20px; margin: 0 auto; min-height: 400px;}
+.page-forgotpwd-wrap .fgtpaw-wrap h2{color: #14191E; font-size: 24px; line-height: 24px;}
+.page-forgotpwd-wrap .link-info{position: relative;}
+.page-forgotpwd-wrap .link-info h3{font-size: 12px; color: #B5B9BC; line-height: 32px;}
+.page-forgotpwd-wrap .link-info .right-back{transition: all .3s; font-size: 14px; position: absolute; color: #F01400; position: absolute; right: 0px; top: 3px;}
+.page-forgotpwd-wrap .right-back:hover { color: #ff6464;}
+.tips{font-size: 12px; height: 30px; line-height: 30px; clear: both; color: #F01400;}
+.ipt{color: #14191E; background-color: #FFF; border: 1px solid #98A1A6; height: 20px; font-size: 14px; line-height: 20px; border-radius: 0px; transition: border-color .15s ease-in-out 0s, box-shadow .15s ease-in-out 0s;
+	-webkit-transition: border-color .15s ease-in-out 0s, box-shadow .15s ease-in-out 0s; -moz-transition: border-color .15s ease-in-out 0s, box-shadow .15s ease-in-out 0s; -o-transition: border-color .15s ease-in-out 0s, box-shadow .15s ease-in-out 0s;
+	 border-color: #98a1a6; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);}
+.ipt{width: 299px; box-shadow: 2px 0px 5px 0px #FFF; padding: 9px 9px 9px 10px; border-color: #D0D6D9;}
+.ipt:focus { border-color: #98a1a6; color: #14191e;}
+.form-control{height: 60px;}
+.form-control .tips{line-height: 20px; height: 20px;}
+.form-control-verify input{background: #FFF none repeat scroll 0% 0%; padding-left: 7px; width: 120px;}
+.form-control .verify-img{width: 70px; height: 40px; vertical-align: top; cursor: pointer;}
+.form-control-verify img{margin-left: 10px; display: inline-block;}
+.btn{display: inline-block; margin-bottom: 0px; font-weight: 200; text-align: center; vertical-align: middle; cursor: pointer; text-decoration: none; box-sizing: content-box; background-image: none; border: 1px solid transparent; white-space: nowrap; outline: medius none; -moz-user-select: none;}
+.btn-red{color: #FFF; background-color: #C00; border-color: #C00; border-style: solid; border-width: 1px; cursor: pointer; transition: all .3s; width: 138px; height: 38px; line-height: 38px; font-size: 14px;}
+.btn-block{display: block; width: 100%; padding: 0px;}
+.page-forgotpwd-wrap .btn-red{background-color: #F01400; border-color: #F01400; height: 50px; line-height: 50px; margin-top: 10px;}
+.page-forgotpwd-wrap .btn-red:hover {background-color: #ff6464;border-color: #ff6464;}
+/**发送Email 成功界面**/
+.forgot-send-result{text-align: center;}
+.forgot-send-result i{display: inline-block; margin: 20px 0px 10px -40px; width: 120px; height: 55px; background: transparent url("/resources/images/user/settings/sendmail.png") no-repeat scroll 0% 0%;}
+.forgot-send-result p{color: #14191E; font-size: 18px;}
+.forgot-send-result .get-info{font-size: 14px; color: #C8CDD2;}
+.page-forgotpwd-wrap .back-regir{height: 40px; line-height: 40px; margin-top: 26px; color: #FFF;}
+/**重设密码-链接过期**/
+.wrap-boxes{background: #FFF none repeat scroll 0% 0%;}
+.wheader-wrap{padding-bottom: 20px; border-bottom: 1px solid #D0D6D9;}
+.wheader-wrap h1{color: #4D5559; font-size: 18px; line-height: 100%;}
+.pwd-reset-result{width: 300px; margin: 100px auto; text-align: center;}
+.pwd-rstsuc-inner{padding: 20px 0px 45px;}
+.pwd-reset-result{font-size: 14px;}
+.pwd-reset-result p { color: #656E73;}
+.pwd-rstsuc-txt {font-size: 24px;}
+.rlf-btn-green{color: #FFF; font-size: 14px; background-color: #39B94E; height: 40px; line-height: 40px; width: 160px; cursor: pointer; text-align: center; transition: background-color .2s; -webkit-transition: background-color .2s; -moz-transition: background-color .2s; -o-transition: background-color .2s;}
+.pwd-reset-result .rlf-btn-green { color: #FFF;}
+.btn-block-reset{display: block; width: 100%; padding: 0px;}
+/**重设密码-修改密码**/
+.pwd-reset-box{width: 320px; margin: 0 auto;}
+.form-h1{font-size: 24px; color: #14191E;}
+.user-email{font-size: 14px; color: #808080; margin: 10px 0px 7px;}
+.btn-red-reset{height: 50px; line-height: 50px;background-color: #F01400;border-color: #F01400;}
+.btn-red-reset:hover{background-color: #ff6464; border-color: #ff6464;}
+/**重设密码成功**/
+.pwd-rstsuc-icon{display: inline-block; width: 120px; height: 120px; background: url("/resources/images/user/settings/rl-sprite.png") no-repeat 0 -130px;}
+.pwd-rst-msg{font-size: 24px;}
+.pwd-rstsuctm-wrap{color: #c9394a; font-weight: normal;}

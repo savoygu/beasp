@@ -16,7 +16,7 @@
 		<hibernate.version>4.3.11.Final</hibernate.version>
 		<jackson.version>2.2.2</jackson.version>
 		<jfreechart.version>1.0.19</jfreechart.version>
-		<java.home>D:\Eclipse\Java\jdk1.7.0_45</java.home>
+		<java.home>/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home</java.home>
 	</properties>
 
 	<dependencyManagement>
@@ -78,19 +78,19 @@
 				<artifactId>spring-webmvc</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-			
+
 			<!-- websocket -->
-			<dependency>  
-			   <groupId>org.springframework</groupId>  
-			   <artifactId>spring-websocket</artifactId>    
+			<dependency>
+			   <groupId>org.springframework</groupId>
+			   <artifactId>spring-websocket</artifactId>
 			   <version>${spring.version}</version>
-			</dependency>  
-			<dependency>  
-			   <groupId>org.springframework</groupId>  
-			   <artifactId>spring-messaging</artifactId>
-			   <version>${spring.version}</version>   
 			</dependency>
-		
+			<dependency>
+			   <groupId>org.springframework</groupId>
+			   <artifactId>spring-messaging</artifactId>
+			   <version>${spring.version}</version>
+			</dependency>
+
 			<!-- Hibernate 相关 jar 包 -->
 			<dependency>
 				<groupId>org.hibernate</groupId>
@@ -156,7 +156,7 @@
 				<artifactId>jstl</artifactId>
 				<version>1.2</version>
 			</dependency>
-			
+
 			<!-- json 相关的 jar 包 -->
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
@@ -178,7 +178,7 @@
 				<artifactId>jackson-mapper-asl</artifactId>
 				<version>1.9.13</version>
 			</dependency>
-			
+
 			<!-- 文件上传 相关的 jar 包 -->
 			<dependency>
 				<groupId>commons-io</groupId>
@@ -207,7 +207,7 @@
 				<artifactId>commons-codec</artifactId>
 				<version>1.10</version>
 			</dependency>
-			
+
 			<!-- 全文检索方案一、Compass-->
 			<!--<dependency>
 				<groupId>org.compass-project</groupId>
@@ -263,7 +263,7 @@
 						<encoding>UTF-8</encoding>
 	                    <compilerArguments>
 	                        <verbose />
-	                        <bootclasspath>${java.home}\jre\lib\rt.jar;${java.home}\jre\lib\jce.jar</bootclasspath>
+	                        <bootclasspath>${java.home}/jre/lib/rt.jar;${java.home}/jre/lib/jce.jar</bootclasspath>
 	                    </compilerArguments>
 					</configuration>
 				</plugin>
@@ -309,8 +309,8 @@
 								retainDays：日志文件保存的天数, 超过删除
 								logCookies：记录 cookies
 								启动 jetty 服务，在项目的 target 目录下会生成一个 access-2015_06_23.log 文件，该文件中的其中一条记录如下：
-								localhost 0:0:0:0:0:0:0:1 - - [2015-06-23 01:17:05] "GET /css/main.css HTTP/1.1" 304 - 
-								"http://localhost:8081/"  "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) 
+								localhost 0:0:0:0:0:0:0:1 - - [2015-06-23 01:17:05] "GET /css/main.css HTTP/1.1" 304 -
+								"http://localhost:8081/"  "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko)
 								Chrome/35.0.1916.153 Safari/537.36 SE 2.X MetaSr 1.0" "JSESSIONID=2gyikovul2iz168116l2afo4f" -->
 		  				<requestLog implementation="org.eclipse.jetty.server.NCSARequestLog">
 						    <filename>target/access-yyyy_mm_dd.log</filename>

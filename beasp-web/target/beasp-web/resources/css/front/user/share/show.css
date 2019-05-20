@@ -1,0 +1,49 @@
+@CHARSET "UTF-8";
+/**书籍分享-分享界面**/
+.container{color: #656E73; min-height: 700px;}
+.share-main{width:880px; margin: 0 auto;}
+.book-item-title, .user-item-title{height: 100px; line-height: 100px;}
+.book-item-title h2, .user-item-title h2{font-size: 18px;}
+.book-item-title h2{height: 30px; line-height: 30px; margin-top: 35px;}
+.book-item-title a{display: block; height: 30px;line-height: 30px; background-color: #FF318C; padding-left: 8px; padding-right: 8px; color: #FFF; }
+.user-item-title h2{position: absolute; right: 0px;}
+.book-item-content, .user-item-content  { display: table; table-layout: fixed;}
+.user-item-content{height: 122px;width: 880px;}
+.book-item-content .thumbnail, .book-item-content .introduction, .user-item-content .thumbnail, .user-item-content .introduction { display: table-cell;}
+.book-item-content .thumbnail, .user-item-content .thumbnail { width: 230px;}
+.book-item-content .thumbnail img, .user-item-content .thumbnail img{width: 210px; height: 118px;}
+.book-item-content .introduction, .user-item-content .introduction { font-size: 14px;line-height: 22px;vertical-align: top;}
+.book-item-content .title, .user-item-content .title { font-size: 16px; font-weight: bold; margin-bottom: 9px; }
+.autowrap { word-wrap: break-word; word-break: break-all;}
+.book-item-content .description, .book-item-content .chapter, .user-item-content .description, .user-item-content .chapter { color: #787D82;}
+.share-btn-submit{height: 36px; width: 120px; margin-top: 32px;}
+/**书籍分享-分享成功**/
+#main{min-height: 0px; padding: 20px 0px;}
+.wcontainer{width: 1200px; margin: 0 auto; min-width: 660px;}
+.wrap-boxes{background: #FFF none repeat scroll 0% 0%;}
+.wheader-wrap{padding-bottom: 20px; border-bottom: 1px solid #D0D6D9;}
+.wheader-wrap h1{color: #4D5559; font-size: 18px; line-height: 100%;}
+.pwd-reset-result{width: 300px; margin: 100px auto; text-align: center;}
+.pwd-rstsuc-inner{padding: 20px 0px 45px;}
+.pwd-reset-result{font-size: 14px;}
+.pwd-reset-result p { color: #656E73;}
+.pwd-rstsuc-txt {font-size: 24px;}
+.rlf-btn-green{color: #FFF; font-size: 14px; background-color: #39B94E; height: 40px; line-height: 40px; width: 160px; cursor: pointer; text-align: center; transition: background-color .2s; -webkit-transition: background-color .2s; -moz-transition: background-color .2s; -o-transition: background-color .2s;}
+.pwd-reset-result .rlf-btn-green { color: #FFF;}
+.btn-block-reset{display: block; width: 100%; padding: 0px;}
+.pwd-rsterror-icon{display: inline-block; width: 120px; height: 120px; background: url("/resources/images/user/settings/rl-sprite.png") no-repeat 0 0;}
+.pwd-rstsuc-icon{display: inline-block; width: 120px; height: 120px; background: url("/resources/images/user/settings/rl-sprite.png") no-repeat 0 -130px;}
+/* .pwd-rst-msg{font-size: 24px;} */
+.pwd-rst-msg{padding: 5px 0px;}
+.pwd-rstsuctm-wrap{color: #c9394a; font-weight: normal;}
+
+/**书籍分享-分享成功**/
+.exchange-book-list{  width: 880px; text-align: center; border-spacing: 0px;}
+table td, table th{border-top:1px solid #787D82; border-left:1px solid #787D82; padding: 5px;}
+table tr:last-child td{border-bottom:1px solid #787D82;}
+table td:last-child, table th:last-child{border-right:1px solid #787D82;}
+
+.book-oper{width: 100%; height: 100px; line-height: 100px;}
+.book-oper a{display: block; height: 30px; width: 120px; line-height: 30px; margin-top: 35px; background-color: #FC0371; 
+	color: #FFF; transition: all 0.4s ease-in; -moz-transition: all 0.4s ease-in; -webkit-transition: all 0.4s ease-in; -ms-transition: all 0.4s;-o-transition: all 0.4s ease-in;  border-radius: 3px; float: left; margin-right: 10px; text-align: center;}
+.book-oper a:hover{background-color: #FF318C; color: #FFF;}

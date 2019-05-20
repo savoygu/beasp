@@ -1,0 +1,53 @@
+/**弹出框-登录**/
+#mask{background-color: #000; opacity: 0.7; filter:alpha(opacity=70); width: 100%; height: 1000px; cursor:pointer; position: absolute; top: 0px; left: 0px; z-index: 1000;}
+/**弹出框-注册**/
+/* #login{position: fixed; left: 30%; top: 30%; z-index: 10001;}
+.loginCon{width: 670px; height: 380px; background: url(/resources/images/loginBg.png) no-repeat; position: relative; }
+#close{width: 30px; height: 30px; background: url(/resources/images/close.png) no-repeat; cursor:pointer; position: absolute; top: 5px; right: 5px;} */
+.rl-modal.in{opacity:1;filter:alpha(opacity=100);}
+.rl-modal{position: fixed; background-color: #FFF; z-index:10001;width: 360px; padding-bottom: 30px; left: 50%; top: 50%; margin: -218px 0 0 -180px;box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);  transition: all 0.2s;-webkit-transition: all 0.2s; -moz-transition: all 0.2s; -o-transition: all 0.2s;}
+.rl-modal-header{position: relative; padding: 0 20px;}
+.rl-modal-header h1{font-size: 16px; line-height: 49px; height: 49px; color: #787d82; border-bottom: 1px solid #d0d6d9;}
+.rl-modal-header h1 span{float: left; width: 80px; text-align: center; height: 49px; line-height: 49px; cursor: pointer;}
+.rl-modal-header .active-title, .rl-modal-header span:hover{border-bottom: 1px solid #f01400;color: #f01400;}
+.rl-close{position: absolute; top: 17px; right: 20px; width: 17px; height: 17px; cursor: pointer; background: url("/resources/images/nlogin.png") no-repeat 0 0;transition: transform 0.2s;-webkit-transition: transform 0.2s;-moz-transition: transform 0.2s;-o-transition: transform 0.2s;}
+.rl-close:hover { background-position: 0 -21px; transform: scale(1.1); -webkit-transform: scale(1.1); -moz-transform: scale(1.1);}
+.rl-modal-body{padding: 0 30px;}
+.rlf-tip-globle{font-size: 14px;height: 30px;line-height: 30px; color: #cc0000;}
+.ipt{color: #14191e; background-color: #FFF; border: 1px solid #98a1a6; height: 20px; padding: 9px 9px; font-size: 14px; line-height: 20px; border-radius: 0px; -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; -moz-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; border-color: #98a1a6; -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);}
+.rl-modal .ipt{width: 279px; padding: 9px 9px 9px 10px; background-color: #FFF; border-color: #d0d6d9; box-shadow:2px 0px 5px 0px #FFF;}
+.rl-modal .ipt:focus { border-color: #98a1a6;}
+.rlf-tip-wrap{font-size: 12px;height: 20px; color: #cc0000;}
+.rlf-appendix{line-height: 1em; margin-bottom: 20px;}
+.rlf-appendix .rlf-autoin, .rlf-appendix .rlf-forget {color: #787d82; font-size: 14px;}
+.rlf-appendix .auto-cbx{margin-right: 10px; vertical-align: -1px;}
+.rlf-appendix .rlf-forget:hover { color: #f01400;}
+.btn-red{color: #FFF; background-color: #cc0000; border-color: #cc0000; border-style: solid; border-width: 1px; cursor: pointer;-weibkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s; width: 138px; height: 38px; line-height: 38px; font-size: 14px;}
+.btn-red:link, .btn-red:visited { color: #ffffff;}
+.btn-red:hover,.btn-red:focus,.btn-red.focus {color: #ffffff; background-color: #f00000; border-color: #f00000;}
+.btn-red:active,.btn-red.active { background-color: #b30000; border-color: #b30000;}
+.btn-full { width: 300px; height: 50px; line-height: 50px; font-size: 16px;  font-family: "Microsoft Yahei", "Hiragino Sans GB", Helvetica, "Helvetica Neue", "微软雅黑", Tahoma, Arial, sans-serif;}
+.rl-modal .btn-red { background-color: #f01400; border-color: #f01400;}
+.rl-modal .btn-red:hover { background-color: #ff6464; border-color: #ff6464;}
+.rl-modal .ipt-verify{margin-right: 10px;width: 120px;padding-left: 9px;background-image: none;}
+.verify-img-wrap{float: left;height: 40px;width: 70px;}
+.rl-modal .verify-img{height: 40px;width: 70px; vertical-align: top;}
+.rl-modal .icon-refresh{color: #b5b9bc; font-size: 12px;display: inline-block;margin: 14px 0 0 10px;-webkit-transition: 0.4s linear;transition: 0.4s ease-in;}
+.rl-modal .icon-refresh:hover{color: #cc0000;}
+.rlf-tip-wrap {clear: both;}
+.ipt:-moz-placeholder {
+  color: #c8cdd2;
+}
+.ipt::-moz-placeholder {
+  color: #c8cdd2;
+  opacity: 1;
+}
+.ipt:-ms-input-placeholder {
+  color: #c8cdd2;
+}
+.ipt::-webkit-input-placeholder {
+  color: #c8cdd2;
+}
+.ipt.placeholder {
+  color: #c8cdd2;
+}
